@@ -1,0 +1,494 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		651B29681F6EC1730085BCE3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 651B29671F6EC1730085BCE3 /* AppDelegate.m */; };
+		651B296E1F6EC1730085BCE3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 651B296C1F6EC1730085BCE3 /* Main.storyboard */; };
+		651B29701F6EC1730085BCE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 651B296F1F6EC1730085BCE3 /* Assets.xcassets */; };
+		651B29731F6EC1730085BCE3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 651B29711F6EC1730085BCE3 /* LaunchScreen.storyboard */; };
+		651B29761F6EC1730085BCE3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 651B29751F6EC1730085BCE3 /* main.m */; };
+		654F87641F6ED6A200B3CC3A /* CLDemoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 654F87631F6ED6A200B3CC3A /* CLDemoCollectionViewCell.m */; };
+		654F87671F6ED6C000B3CC3A /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 654F87651F6ED6C000B3CC3A /* RootViewController.m */; };
+		658075301F6EDB62002408A5 /* CKPhotoCollectionFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 658075051F6EDB62002408A5 /* CKPhotoCollectionFlowLayout.m */; };
+		658075311F6EDB62002408A5 /* CKPhotoDataCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 658075071F6EDB62002408A5 /* CKPhotoDataCategory.m */; };
+		658075321F6EDB62002408A5 /* CKPhotoKitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 658075091F6EDB62002408A5 /* CKPhotoKitHelper.m */; };
+		658075331F6EDB62002408A5 /* CKPhotoSelectedAssetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 6580750B1F6EDB62002408A5 /* CKPhotoSelectedAssetManager.m */; };
+		658075341F6EDB62002408A5 /* CLPhotoKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 6580750C1F6EDB62002408A5 /* CLPhotoKit.bundle */; };
+		658075351F6EDB62002408A5 /* CKPhotoCollectionDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 6580750F1F6EDB62002408A5 /* CKPhotoCollectionDataSource.m */; };
+		658075361F6EDB62002408A5 /* CKPhotoTableDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 658075111F6EDB62002408A5 /* CKPhotoTableDataSource.m */; };
+		658075371F6EDB62002408A5 /* CKPhotoAlbumDetailController.m in Sources */ = {isa = PBXBuildFile; fileRef = 658075141F6EDB62002408A5 /* CKPhotoAlbumDetailController.m */; };
+		658075381F6EDB62002408A5 /* CKPhotoAlbumListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 658075161F6EDB62002408A5 /* CKPhotoAlbumListController.m */; };
+		658075391F6EDB62002408A5 /* CKPhotoCameraController.m in Sources */ = {isa = PBXBuildFile; fileRef = 658075181F6EDB62002408A5 /* CKPhotoCameraController.m */; };
+		6580753A1F6EDB62002408A5 /* CKPhotoMultiCameraPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6580751A1F6EDB62002408A5 /* CKPhotoMultiCameraPicker.m */; };
+		6580753B1F6EDB62002408A5 /* CKPhotoMultiImagePicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 6580751C1F6EDB62002408A5 /* CKPhotoMultiImagePicker.m */; };
+		6580753C1F6EDB62002408A5 /* CKPhotoPreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6580751E1F6EDB62002408A5 /* CKPhotoPreviewViewController.m */; };
+		6580753D1F6EDB62002408A5 /* CKPhotoHorizontalScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 658075211F6EDB62002408A5 /* CKPhotoHorizontalScrollView.m */; };
+		6580753E1F6EDB62002408A5 /* CKPhotoBottomPreviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 658075231F6EDB62002408A5 /* CKPhotoBottomPreviewCell.m */; };
+		6580753F1F6EDB62002408A5 /* CKPhotoCameraOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 658075251F6EDB62002408A5 /* CKPhotoCameraOverlayView.m */; };
+		658075401F6EDB62002408A5 /* CKPhotoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 658075271F6EDB62002408A5 /* CKPhotoCollectionViewCell.m */; };
+		658075411F6EDB62002408A5 /* CKPhotoHorizontalScrollItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = 658075291F6EDB62002408A5 /* CKPhotoHorizontalScrollItemView.m */; };
+		658075421F6EDB62002408A5 /* CKPhotoPreviewOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6580752B1F6EDB62002408A5 /* CKPhotoPreviewOverlayView.m */; };
+		658075431F6EDB62002408A5 /* CKPhotoSelectedAssetPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6580752D1F6EDB62002408A5 /* CKPhotoSelectedAssetPreviewView.m */; };
+		658075441F6EDB62002408A5 /* CKPhotoTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6580752F1F6EDB62002408A5 /* CKPhotoTableCell.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		651B29631F6EC1730085BCE3 /* XYPhotoKitDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XYPhotoKitDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		651B29661F6EC1730085BCE3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		651B29671F6EC1730085BCE3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		651B296D1F6EC1730085BCE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		651B296F1F6EC1730085BCE3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		651B29721F6EC1730085BCE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		651B29741F6EC1730085BCE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		651B29751F6EC1730085BCE3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		654F87621F6ED6A200B3CC3A /* CLDemoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLDemoCollectionViewCell.h; path = ../../../../../Downloads/CLPhotoKit/CLPhotoKitDemo/CLPhotoKitDemo/CLDemoCollectionViewCell.h; sourceTree = "<group>"; };
+		654F87631F6ED6A200B3CC3A /* CLDemoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLDemoCollectionViewCell.m; path = ../../../../../Downloads/CLPhotoKit/CLPhotoKitDemo/CLPhotoKitDemo/CLDemoCollectionViewCell.m; sourceTree = "<group>"; };
+		654F87651F6ED6C000B3CC3A /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootViewController.m; path = ../../../../../Downloads/CLPhotoKit/CLPhotoKitDemo/CLPhotoKitDemo/RootViewController.m; sourceTree = "<group>"; };
+		654F87661F6ED6C000B3CC3A /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = ../../../../../Downloads/CLPhotoKit/CLPhotoKitDemo/CLPhotoKitDemo/RootViewController.h; sourceTree = "<group>"; };
+		658075041F6EDB62002408A5 /* CKPhotoCollectionFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKPhotoCollectionFlowLayout.h; sourceTree = "<group>"; };
+		658075051F6EDB62002408A5 /* CKPhotoCollectionFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKPhotoCollectionFlowLayout.m; sourceTree = "<group>"; };
+		658075061F6EDB62002408A5 /* CKPhotoDataCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKPhotoDataCategory.h; sourceTree = "<group>"; };
+		658075071F6EDB62002408A5 /* CKPhotoDataCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKPhotoDataCategory.m; sourceTree = "<group>"; };
+		658075081F6EDB62002408A5 /* CKPhotoKitHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKPhotoKitHelper.h; sourceTree = "<group>"; };
+		658075091F6EDB62002408A5 /* CKPhotoKitHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKPhotoKitHelper.m; sourceTree = "<group>"; };
+		6580750A1F6EDB62002408A5 /* CKPhotoSelectedAssetManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKPhotoSelectedAssetManager.h; sourceTree = "<group>"; };
+		6580750B1F6EDB62002408A5 /* CKPhotoSelectedAssetManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKPhotoSelectedAssetManager.m; sourceTree = "<group>"; };
+		6580750C1F6EDB62002408A5 /* CLPhotoKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = CLPhotoKit.bundle; sourceTree = "<group>"; };
+		6580750E1F6EDB62002408A5 /* CKPhotoCollectionDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKPhotoCollectionDataSource.h; sourceTree = "<group>"; };
+		6580750F1F6EDB62002408A5 /* CKPhotoCollectionDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKPhotoCollectionDataSource.m; sourceTree = "<group>"; };
+		658075101F6EDB62002408A5 /* CKPhotoTableDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKPhotoTableDataSource.h; sourceTree = "<group>"; };
+		658075111F6EDB62002408A5 /* CKPhotoTableDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKPhotoTableDataSource.m; sourceTree = "<group>"; };
+		658075131F6EDB62002408A5 /* CKPhotoAlbumDetailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKPhotoAlbumDetailController.h; sourceTree = "<group>"; };
+		658075141F6EDB62002408A5 /* CKPhotoAlbumDetailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKPhotoAlbumDetailController.m; sourceTree = "<group>"; };
+		658075151F6EDB62002408A5 /* CKPhotoAlbumListController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKPhotoAlbumListController.h; sourceTree = "<group>"; };
+		658075161F6EDB62002408A5 /* CKPhotoAlbumListController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKPhotoAlbumListController.m; sourceTree = "<group>"; };
+		658075171F6EDB62002408A5 /* CKPhotoCameraController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKPhotoCameraController.h; sourceTree = "<group>"; };
+		658075181F6EDB62002408A5 /* CKPhotoCameraController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKPhotoCameraController.m; sourceTree = "<group>"; };
+		658075191F6EDB62002408A5 /* CKPhotoMultiCameraPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKPhotoMultiCameraPicker.h; sourceTree = "<group>"; };
+		6580751A1F6EDB62002408A5 /* CKPhotoMultiCameraPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKPhotoMultiCameraPicker.m; sourceTree = "<group>"; };
+		6580751B1F6EDB62002408A5 /* CKPhotoMultiImagePicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKPhotoMultiImagePicker.h; sourceTree = "<group>"; };
+		6580751C1F6EDB62002408A5 /* CKPhotoMultiImagePicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKPhotoMultiImagePicker.m; sourceTree = "<group>"; };
+		6580751D1F6EDB62002408A5 /* CKPhotoPreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKPhotoPreviewViewController.h; sourceTree = "<group>"; };
+		6580751E1F6EDB62002408A5 /* CKPhotoPreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKPhotoPreviewViewController.m; sourceTree = "<group>"; };
+		658075201F6EDB62002408A5 /* CKPhotoHorizontalScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKPhotoHorizontalScrollView.h; sourceTree = "<group>"; };
+		658075211F6EDB62002408A5 /* CKPhotoHorizontalScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKPhotoHorizontalScrollView.m; sourceTree = "<group>"; };
+		658075221F6EDB62002408A5 /* CKPhotoBottomPreviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKPhotoBottomPreviewCell.h; sourceTree = "<group>"; };
+		658075231F6EDB62002408A5 /* CKPhotoBottomPreviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKPhotoBottomPreviewCell.m; sourceTree = "<group>"; };
+		658075241F6EDB62002408A5 /* CKPhotoCameraOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKPhotoCameraOverlayView.h; sourceTree = "<group>"; };
+		658075251F6EDB62002408A5 /* CKPhotoCameraOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKPhotoCameraOverlayView.m; sourceTree = "<group>"; };
+		658075261F6EDB62002408A5 /* CKPhotoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKPhotoCollectionViewCell.h; sourceTree = "<group>"; };
+		658075271F6EDB62002408A5 /* CKPhotoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKPhotoCollectionViewCell.m; sourceTree = "<group>"; };
+		658075281F6EDB62002408A5 /* CKPhotoHorizontalScrollItemView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKPhotoHorizontalScrollItemView.h; sourceTree = "<group>"; };
+		658075291F6EDB62002408A5 /* CKPhotoHorizontalScrollItemView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKPhotoHorizontalScrollItemView.m; sourceTree = "<group>"; };
+		6580752A1F6EDB62002408A5 /* CKPhotoPreviewOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKPhotoPreviewOverlayView.h; sourceTree = "<group>"; };
+		6580752B1F6EDB62002408A5 /* CKPhotoPreviewOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKPhotoPreviewOverlayView.m; sourceTree = "<group>"; };
+		6580752C1F6EDB62002408A5 /* CKPhotoSelectedAssetPreviewView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKPhotoSelectedAssetPreviewView.h; sourceTree = "<group>"; };
+		6580752D1F6EDB62002408A5 /* CKPhotoSelectedAssetPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKPhotoSelectedAssetPreviewView.m; sourceTree = "<group>"; };
+		6580752E1F6EDB62002408A5 /* CKPhotoTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKPhotoTableCell.h; sourceTree = "<group>"; };
+		6580752F1F6EDB62002408A5 /* CKPhotoTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKPhotoTableCell.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		651B29601F6EC1730085BCE3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		651B295A1F6EC1730085BCE3 = {
+			isa = PBXGroup;
+			children = (
+				658075031F6EDB62002408A5 /* XYPhotoKit */,
+				651B29651F6EC1730085BCE3 /* XYPhotoKitDemo */,
+				651B29641F6EC1730085BCE3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		651B29641F6EC1730085BCE3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				651B29631F6EC1730085BCE3 /* XYPhotoKitDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		651B29651F6EC1730085BCE3 /* XYPhotoKitDemo */ = {
+			isa = PBXGroup;
+			children = (
+				651B29661F6EC1730085BCE3 /* AppDelegate.h */,
+				651B29671F6EC1730085BCE3 /* AppDelegate.m */,
+				654F87621F6ED6A200B3CC3A /* CLDemoCollectionViewCell.h */,
+				654F87631F6ED6A200B3CC3A /* CLDemoCollectionViewCell.m */,
+				654F87661F6ED6C000B3CC3A /* RootViewController.h */,
+				654F87651F6ED6C000B3CC3A /* RootViewController.m */,
+				651B296C1F6EC1730085BCE3 /* Main.storyboard */,
+				651B296F1F6EC1730085BCE3 /* Assets.xcassets */,
+				651B29711F6EC1730085BCE3 /* LaunchScreen.storyboard */,
+				651B29741F6EC1730085BCE3 /* Info.plist */,
+				651B29751F6EC1730085BCE3 /* main.m */,
+			);
+			path = XYPhotoKitDemo;
+			sourceTree = "<group>";
+		};
+		658075031F6EDB62002408A5 /* XYPhotoKit */ = {
+			isa = PBXGroup;
+			children = (
+				658075041F6EDB62002408A5 /* CKPhotoCollectionFlowLayout.h */,
+				658075051F6EDB62002408A5 /* CKPhotoCollectionFlowLayout.m */,
+				658075061F6EDB62002408A5 /* CKPhotoDataCategory.h */,
+				658075071F6EDB62002408A5 /* CKPhotoDataCategory.m */,
+				658075081F6EDB62002408A5 /* CKPhotoKitHelper.h */,
+				658075091F6EDB62002408A5 /* CKPhotoKitHelper.m */,
+				6580750A1F6EDB62002408A5 /* CKPhotoSelectedAssetManager.h */,
+				6580750B1F6EDB62002408A5 /* CKPhotoSelectedAssetManager.m */,
+				6580750C1F6EDB62002408A5 /* CLPhotoKit.bundle */,
+				6580750D1F6EDB62002408A5 /* DataSources */,
+				658075121F6EDB62002408A5 /* ViewControllers */,
+				6580751F1F6EDB62002408A5 /* Views */,
+			);
+			name = XYPhotoKit;
+			path = ../XYPhotoKit;
+			sourceTree = "<group>";
+		};
+		6580750D1F6EDB62002408A5 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				6580750E1F6EDB62002408A5 /* CKPhotoCollectionDataSource.h */,
+				6580750F1F6EDB62002408A5 /* CKPhotoCollectionDataSource.m */,
+				658075101F6EDB62002408A5 /* CKPhotoTableDataSource.h */,
+				658075111F6EDB62002408A5 /* CKPhotoTableDataSource.m */,
+			);
+			path = DataSources;
+			sourceTree = "<group>";
+		};
+		658075121F6EDB62002408A5 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				658075131F6EDB62002408A5 /* CKPhotoAlbumDetailController.h */,
+				658075141F6EDB62002408A5 /* CKPhotoAlbumDetailController.m */,
+				658075151F6EDB62002408A5 /* CKPhotoAlbumListController.h */,
+				658075161F6EDB62002408A5 /* CKPhotoAlbumListController.m */,
+				658075171F6EDB62002408A5 /* CKPhotoCameraController.h */,
+				658075181F6EDB62002408A5 /* CKPhotoCameraController.m */,
+				658075191F6EDB62002408A5 /* CKPhotoMultiCameraPicker.h */,
+				6580751A1F6EDB62002408A5 /* CKPhotoMultiCameraPicker.m */,
+				6580751B1F6EDB62002408A5 /* CKPhotoMultiImagePicker.h */,
+				6580751C1F6EDB62002408A5 /* CKPhotoMultiImagePicker.m */,
+				6580751D1F6EDB62002408A5 /* CKPhotoPreviewViewController.h */,
+				6580751E1F6EDB62002408A5 /* CKPhotoPreviewViewController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		6580751F1F6EDB62002408A5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				658075201F6EDB62002408A5 /* CKPhotoHorizontalScrollView.h */,
+				658075211F6EDB62002408A5 /* CKPhotoHorizontalScrollView.m */,
+				658075221F6EDB62002408A5 /* CKPhotoBottomPreviewCell.h */,
+				658075231F6EDB62002408A5 /* CKPhotoBottomPreviewCell.m */,
+				658075241F6EDB62002408A5 /* CKPhotoCameraOverlayView.h */,
+				658075251F6EDB62002408A5 /* CKPhotoCameraOverlayView.m */,
+				658075261F6EDB62002408A5 /* CKPhotoCollectionViewCell.h */,
+				658075271F6EDB62002408A5 /* CKPhotoCollectionViewCell.m */,
+				658075281F6EDB62002408A5 /* CKPhotoHorizontalScrollItemView.h */,
+				658075291F6EDB62002408A5 /* CKPhotoHorizontalScrollItemView.m */,
+				6580752A1F6EDB62002408A5 /* CKPhotoPreviewOverlayView.h */,
+				6580752B1F6EDB62002408A5 /* CKPhotoPreviewOverlayView.m */,
+				6580752C1F6EDB62002408A5 /* CKPhotoSelectedAssetPreviewView.h */,
+				6580752D1F6EDB62002408A5 /* CKPhotoSelectedAssetPreviewView.m */,
+				6580752E1F6EDB62002408A5 /* CKPhotoTableCell.h */,
+				6580752F1F6EDB62002408A5 /* CKPhotoTableCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		651B29621F6EC1730085BCE3 /* XYPhotoKitDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 651B29791F6EC1730085BCE3 /* Build configuration list for PBXNativeTarget "XYPhotoKitDemo" */;
+			buildPhases = (
+				651B295F1F6EC1730085BCE3 /* Sources */,
+				651B29601F6EC1730085BCE3 /* Frameworks */,
+				651B29611F6EC1730085BCE3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = XYPhotoKitDemo;
+			productName = XYPhotoKitDemo;
+			productReference = 651B29631F6EC1730085BCE3 /* XYPhotoKitDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		651B295B1F6EC1730085BCE3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0900;
+				ORGANIZATIONNAME = Daniel;
+				TargetAttributes = {
+					651B29621F6EC1730085BCE3 = {
+						CreatedOnToolsVersion = 9.0;
+						ProvisioningStyle = Manual;
+					};
+				};
+			};
+			buildConfigurationList = 651B295E1F6EC1730085BCE3 /* Build configuration list for PBXProject "XYPhotoKitDemo" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 651B295A1F6EC1730085BCE3;
+			productRefGroup = 651B29641F6EC1730085BCE3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				651B29621F6EC1730085BCE3 /* XYPhotoKitDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		651B29611F6EC1730085BCE3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				651B29731F6EC1730085BCE3 /* LaunchScreen.storyboard in Resources */,
+				651B29701F6EC1730085BCE3 /* Assets.xcassets in Resources */,
+				658075341F6EDB62002408A5 /* CLPhotoKit.bundle in Resources */,
+				651B296E1F6EC1730085BCE3 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		651B295F1F6EC1730085BCE3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				658075431F6EDB62002408A5 /* CKPhotoSelectedAssetPreviewView.m in Sources */,
+				6580753B1F6EDB62002408A5 /* CKPhotoMultiImagePicker.m in Sources */,
+				6580753D1F6EDB62002408A5 /* CKPhotoHorizontalScrollView.m in Sources */,
+				658075381F6EDB62002408A5 /* CKPhotoAlbumListController.m in Sources */,
+				6580753C1F6EDB62002408A5 /* CKPhotoPreviewViewController.m in Sources */,
+				658075441F6EDB62002408A5 /* CKPhotoTableCell.m in Sources */,
+				654F87641F6ED6A200B3CC3A /* CLDemoCollectionViewCell.m in Sources */,
+				651B29761F6EC1730085BCE3 /* main.m in Sources */,
+				6580753F1F6EDB62002408A5 /* CKPhotoCameraOverlayView.m in Sources */,
+				658075361F6EDB62002408A5 /* CKPhotoTableDataSource.m in Sources */,
+				658075321F6EDB62002408A5 /* CKPhotoKitHelper.m in Sources */,
+				658075311F6EDB62002408A5 /* CKPhotoDataCategory.m in Sources */,
+				658075351F6EDB62002408A5 /* CKPhotoCollectionDataSource.m in Sources */,
+				658075421F6EDB62002408A5 /* CKPhotoPreviewOverlayView.m in Sources */,
+				658075331F6EDB62002408A5 /* CKPhotoSelectedAssetManager.m in Sources */,
+				658075301F6EDB62002408A5 /* CKPhotoCollectionFlowLayout.m in Sources */,
+				658075401F6EDB62002408A5 /* CKPhotoCollectionViewCell.m in Sources */,
+				654F87671F6ED6C000B3CC3A /* RootViewController.m in Sources */,
+				658075371F6EDB62002408A5 /* CKPhotoAlbumDetailController.m in Sources */,
+				651B29681F6EC1730085BCE3 /* AppDelegate.m in Sources */,
+				658075391F6EDB62002408A5 /* CKPhotoCameraController.m in Sources */,
+				6580753E1F6EDB62002408A5 /* CKPhotoBottomPreviewCell.m in Sources */,
+				658075411F6EDB62002408A5 /* CKPhotoHorizontalScrollItemView.m in Sources */,
+				6580753A1F6EDB62002408A5 /* CKPhotoMultiCameraPicker.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		651B296C1F6EC1730085BCE3 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				651B296D1F6EC1730085BCE3 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		651B29711F6EC1730085BCE3 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				651B29721F6EC1730085BCE3 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		651B29771F6EC1730085BCE3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		651B29781F6EC1730085BCE3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		651B297A1F6EC1730085BCE3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = H9J886PZ98;
+				INFOPLIST_FILE = XYPhotoKitDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.xcodeyang.XYPhotoKitDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "cfe3475e-51ee-44d9-8788-57deda3112ae";
+				PROVISIONING_PROFILE_SPECIFIER = "chelun any app";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		651B297B1F6EC1730085BCE3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Manual;
+				DEVELOPMENT_TEAM = H9J886PZ98;
+				INFOPLIST_FILE = XYPhotoKitDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.xcodeyang.XYPhotoKitDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "cfe3475e-51ee-44d9-8788-57deda3112ae";
+				PROVISIONING_PROFILE_SPECIFIER = "chelun any app";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		651B295E1F6EC1730085BCE3 /* Build configuration list for PBXProject "XYPhotoKitDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				651B29771F6EC1730085BCE3 /* Debug */,
+				651B29781F6EC1730085BCE3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		651B29791F6EC1730085BCE3 /* Build configuration list for PBXNativeTarget "XYPhotoKitDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				651B297A1F6EC1730085BCE3 /* Debug */,
+				651B297B1F6EC1730085BCE3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 651B295B1F6EC1730085BCE3 /* Project object */;
+}
