@@ -9,6 +9,8 @@
 @import UIKit;
 @import Photos;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface CKPhotoBottomPreviewCell : UICollectionViewCell
 
 @property (nonatomic, readonly) PHAsset *asset;
@@ -17,3 +19,5 @@
 - (void)setAsset:(PHAsset *)asset indexPath:(NSIndexPath *)indexPath collectionView:(UICollectionView *)collectionView;
 
 @end
+
+NS_ASSUME_NONNULL_END

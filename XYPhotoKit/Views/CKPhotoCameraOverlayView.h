@@ -13,7 +13,6 @@
 @class CKPhotoCameraOverlayView;
 @protocol CKPhotoCameraOverlayViewDelegate<CKPhotoSelectedAssetPreviewViewDelegate>
 
-
 /**
  快门按键点击
 

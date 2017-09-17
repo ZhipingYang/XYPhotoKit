@@ -9,19 +9,23 @@
 
 @import Photos;
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface CKPhotoPreviewViewController : UIViewController
 
 /**
  查看已选择的asset时，使用该方法
  */
-@property (nonatomic, strong) NSArray <PHAsset *> *photos;
+@property (nonatomic, strong, nullable) NSArray <PHAsset *> *photos;
 
 /**
  大图查看某个相册集时，使用该方法；
  同时，监听原生相册资源变化时更新fetchResult
  */
-@property (nonatomic, strong) PHFetchResult *fetchResult;
+@property (nonatomic, strong, nullable) PHFetchResult *fetchResult;
 // 横向scrollview的内容
 @property (nonatomic, assign) NSInteger selectedIndex;
 
 @end
+
+NS_ASSUME_NONNULL_END

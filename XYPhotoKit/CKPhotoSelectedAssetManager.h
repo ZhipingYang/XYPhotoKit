@@ -2,7 +2,7 @@
 //  CKPhotoSelectedAssetManager.h
 //  XYPhotoKitDemo-iOS
 //
-//  Created by XcodeYang on 12/11/14.
+//  Created by XcodeYang on 30/08/2017.
 //  Copyright © 2017 XcodeYang. All rights reserved.
 //
 

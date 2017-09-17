@@ -9,6 +9,8 @@
 @import UIKit;
 @import Photos;
 
+NS_ASSUME_NONNULL_BEGIN
+
 typedef NS_ENUM(NSInteger, CLPhotoMultiPickerStartPosition){
 	// 展示相册列表 tableView，可以push到collectionView
     CLPhotoMultiPickerStartPositionAlbums,
@@ -49,6 +51,15 @@ typedef NS_ENUM(NSInteger, CLPhotoMultiPickerStartPosition){
  @return 已选中的Asset
  */
 - (NSArray<PHAsset *> *)multiImagePickerLoadPresetSelectedAssets;
+
+
+/**
+ 没有相册授权时，展示的提示图片
+ 
+ @return 展示的图片
+ */
+- (nullable UIImage *)multiImagePickerUnauthorizedPlaceHolderImage;
+
 @end
 
 @interface CKPhotoMultiImagePicker : UINavigationController
@@ -56,12 +67,12 @@ typedef NS_ENUM(NSInteger, CLPhotoMultiPickerStartPosition){
 /**
  代理回调已选中的asset
  */
-@property (nonatomic, weak) id<CKPhotoMultiImagePickerDelegate> pickerDelegate;
+@property (nonatomic, weak, nullable) id<CKPhotoMultiImagePickerDelegate> pickerDelegate;
 
 /**
  传入默认的初始化资源
  */
-@property (nonatomic, weak) id<CKPhotoMultiImagePickerDataSource> pickerDataSource;
+@property (nonatomic, weak, nullable) id<CKPhotoMultiImagePickerDataSource> pickerDataSource;
 
 /**
  *  PHAssetMediaTypeUnknown - 全部展示.
@@ -98,4 +109,4 @@ typedef NS_ENUM(NSInteger, CLPhotoMultiPickerStartPosition){
 
 @end
 
-
+NS_ASSUME_NONNULL_END

@@ -28,7 +28,7 @@
     [super viewDidLoad];
 	
 	self.title = CKPhotoImagePickerName.selectAnAlbum;
-
+    self.view.backgroundColor = [UIColor colorWithWhite:0.95 alpha:1];
 	UIBarButtonItem *cancel = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(close)];
 	self.navigationItem.rightBarButtonItems = @[cancel];
 	
