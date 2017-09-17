@@ -106,10 +106,12 @@ _imageRequestId = [self.imageManager requestImageForAsset:_asset targetSize:targ
 ```
 
 
-## TODO
+## todo & upgrade
 
 - [x] 视频播放
 - [ ] 拆分类的层级（比如接入LocalImagePicker等等）
 - [ ] 完善其他获取照片的拓展方法 & 工具（视频压缩、图片压缩，指定相册图片写入等等）
 - [ ] 添加iCloud加载的请求等待提示
+- [ ] 大图预览添加过渡动画，视频播放、消失添加fade
+- [ ] 大图预览改换使用pageController
 - [x] 持久化&有效性验证：对PHAsset持久化存储只需储存 `photoAsset.localIdentifier`的唯一标识，验证对象是否还存在于相册中（即有效性）需要对唯一标识做遍历对比
