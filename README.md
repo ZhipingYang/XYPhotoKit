@@ -2,6 +2,8 @@
 
 基于PhotoKit开发的照片获取方式，支持多选单选（对应的UI略有不同），支持iCloud获取相册等
 
+<img width="200" src="https://user-images.githubusercontent.com/9360037/30523492-dc300e14-9c14-11e7-81f2-1b4eb9bc3ddb.jpg"> <img width="200" src="https://user-images.githubusercontent.com/9360037/30523493-dc6556b4-9c14-11e7-8489-b7e497f1a197.jpg"> <img width="200" src="https://user-images.githubusercontent.com/9360037/30523494-dc81896a-9c14-11e7-9432-e246dc6ad533.jpg"> <img width="200" src="https://user-images.githubusercontent.com/9360037/30523495-dc826b32-9c14-11e7-855b-58f461684d4b.jpg"> <img width="200" src="https://user-images.githubusercontent.com/9360037/30523496-dc832888-9c14-11e7-9136-a21130a2a437.jpg"> <img width="200" src="https://user-images.githubusercontent.com/9360037/30523498-dc8abe22-9c14-11e7-8bc0-ca1c7a44342c.jpg"> <img width="200" src="https://user-images.githubusercontent.com/9360037/30523497-dc8920f8-9c14-11e7-932a-ab077ddd42d3.jpg"> <img width="200" src="https://user-images.githubusercontent.com/9360037/30523499-dc973c06-9c14-11e7-8f15-cc68fe1a394f.jpg"> 
+
 ## 使用方式
 
 详情见`demo`查看
