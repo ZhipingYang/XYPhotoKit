@@ -12,8 +12,6 @@
 		651B29701F6EC1730085BCE3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 651B296F1F6EC1730085BCE3 /* Assets.xcassets */; };
 		651B29731F6EC1730085BCE3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 651B29711F6EC1730085BCE3 /* LaunchScreen.storyboard */; };
 		651B29761F6EC1730085BCE3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 651B29751F6EC1730085BCE3 /* main.m */; };
-		654F87641F6ED6A200B3CC3A /* CLDemoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 654F87631F6ED6A200B3CC3A /* CLDemoCollectionViewCell.m */; };
-		654F87671F6ED6C000B3CC3A /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 654F87651F6ED6C000B3CC3A /* RootViewController.m */; };
 		658075301F6EDB62002408A5 /* CKPhotoCollectionFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 658075051F6EDB62002408A5 /* CKPhotoCollectionFlowLayout.m */; };
 		658075311F6EDB62002408A5 /* CKPhotoDataCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = 658075071F6EDB62002408A5 /* CKPhotoDataCategory.m */; };
 		658075321F6EDB62002408A5 /* CKPhotoKitHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 658075091F6EDB62002408A5 /* CKPhotoKitHelper.m */; };
@@ -35,6 +33,8 @@
 		658075421F6EDB62002408A5 /* CKPhotoPreviewOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6580752B1F6EDB62002408A5 /* CKPhotoPreviewOverlayView.m */; };
 		658075431F6EDB62002408A5 /* CKPhotoSelectedAssetPreviewView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6580752D1F6EDB62002408A5 /* CKPhotoSelectedAssetPreviewView.m */; };
 		658075441F6EDB62002408A5 /* CKPhotoTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6580752F1F6EDB62002408A5 /* CKPhotoTableCell.m */; };
+		65A824B11F6F5CB80087EC13 /* RootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A824AF1F6F5CB80087EC13 /* RootViewController.m */; };
+		65A824B21F6F5CB80087EC13 /* CLDemoCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 65A824B01F6F5CB80087EC13 /* CLDemoCollectionViewCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,10 +46,6 @@
 		651B29721F6EC1730085BCE3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		651B29741F6EC1730085BCE3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		651B29751F6EC1730085BCE3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		654F87621F6ED6A200B3CC3A /* CLDemoCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLDemoCollectionViewCell.h; path = ../../../../../Downloads/CLPhotoKit/CLPhotoKitDemo/CLPhotoKitDemo/CLDemoCollectionViewCell.h; sourceTree = "<group>"; };
-		654F87631F6ED6A200B3CC3A /* CLDemoCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CLDemoCollectionViewCell.m; path = ../../../../../Downloads/CLPhotoKit/CLPhotoKitDemo/CLPhotoKitDemo/CLDemoCollectionViewCell.m; sourceTree = "<group>"; };
-		654F87651F6ED6C000B3CC3A /* RootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RootViewController.m; path = ../../../../../Downloads/CLPhotoKit/CLPhotoKitDemo/CLPhotoKitDemo/RootViewController.m; sourceTree = "<group>"; };
-		654F87661F6ED6C000B3CC3A /* RootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = ../../../../../Downloads/CLPhotoKit/CLPhotoKitDemo/CLPhotoKitDemo/RootViewController.h; sourceTree = "<group>"; };
 		658075041F6EDB62002408A5 /* CKPhotoCollectionFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKPhotoCollectionFlowLayout.h; sourceTree = "<group>"; };
 		658075051F6EDB62002408A5 /* CKPhotoCollectionFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKPhotoCollectionFlowLayout.m; sourceTree = "<group>"; };
 		658075061F6EDB62002408A5 /* CKPhotoDataCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKPhotoDataCategory.h; sourceTree = "<group>"; };
@@ -91,6 +87,10 @@
 		6580752D1F6EDB62002408A5 /* CKPhotoSelectedAssetPreviewView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKPhotoSelectedAssetPreviewView.m; sourceTree = "<group>"; };
 		6580752E1F6EDB62002408A5 /* CKPhotoTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CKPhotoTableCell.h; sourceTree = "<group>"; };
 		6580752F1F6EDB62002408A5 /* CKPhotoTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CKPhotoTableCell.m; sourceTree = "<group>"; };
+		65A824AD1F6F5CB80087EC13 /* RootViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = RootViewController.h; path = ../../../../../GItLab/Pod/CLPhotoKit/CLPhotoKitDemo/CLPhotoKitDemo/RootViewController.h; sourceTree = "<group>"; };
+		65A824AE1F6F5CB80087EC13 /* CLDemoCollectionViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = CLDemoCollectionViewCell.h; path = ../../../../../GItLab/Pod/CLPhotoKit/CLPhotoKitDemo/CLPhotoKitDemo/CLDemoCollectionViewCell.h; sourceTree = "<group>"; };
+		65A824AF1F6F5CB80087EC13 /* RootViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = RootViewController.m; path = ../../../../../GItLab/Pod/CLPhotoKit/CLPhotoKitDemo/CLPhotoKitDemo/RootViewController.m; sourceTree = "<group>"; };
+		65A824B01F6F5CB80087EC13 /* CLDemoCollectionViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = CLDemoCollectionViewCell.m; path = ../../../../../GItLab/Pod/CLPhotoKit/CLPhotoKitDemo/CLPhotoKitDemo/CLDemoCollectionViewCell.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,10 +126,10 @@
 			children = (
 				651B29661F6EC1730085BCE3 /* AppDelegate.h */,
 				651B29671F6EC1730085BCE3 /* AppDelegate.m */,
-				654F87621F6ED6A200B3CC3A /* CLDemoCollectionViewCell.h */,
-				654F87631F6ED6A200B3CC3A /* CLDemoCollectionViewCell.m */,
-				654F87661F6ED6C000B3CC3A /* RootViewController.h */,
-				654F87651F6ED6C000B3CC3A /* RootViewController.m */,
+				65A824AE1F6F5CB80087EC13 /* CLDemoCollectionViewCell.h */,
+				65A824B01F6F5CB80087EC13 /* CLDemoCollectionViewCell.m */,
+				65A824AD1F6F5CB80087EC13 /* RootViewController.h */,
+				65A824AF1F6F5CB80087EC13 /* RootViewController.m */,
 				651B296C1F6EC1730085BCE3 /* Main.storyboard */,
 				651B296F1F6EC1730085BCE3 /* Assets.xcassets */,
 				651B29711F6EC1730085BCE3 /* LaunchScreen.storyboard */,
@@ -286,11 +286,11 @@
 			files = (
 				658075431F6EDB62002408A5 /* CKPhotoSelectedAssetPreviewView.m in Sources */,
 				6580753B1F6EDB62002408A5 /* CKPhotoMultiImagePicker.m in Sources */,
+				65A824B11F6F5CB80087EC13 /* RootViewController.m in Sources */,
 				6580753D1F6EDB62002408A5 /* CKPhotoHorizontalScrollView.m in Sources */,
 				658075381F6EDB62002408A5 /* CKPhotoAlbumListController.m in Sources */,
 				6580753C1F6EDB62002408A5 /* CKPhotoPreviewViewController.m in Sources */,
 				658075441F6EDB62002408A5 /* CKPhotoTableCell.m in Sources */,
-				654F87641F6ED6A200B3CC3A /* CLDemoCollectionViewCell.m in Sources */,
 				651B29761F6EC1730085BCE3 /* main.m in Sources */,
 				6580753F1F6EDB62002408A5 /* CKPhotoCameraOverlayView.m in Sources */,
 				658075361F6EDB62002408A5 /* CKPhotoTableDataSource.m in Sources */,
@@ -300,8 +300,8 @@
 				658075421F6EDB62002408A5 /* CKPhotoPreviewOverlayView.m in Sources */,
 				658075331F6EDB62002408A5 /* CKPhotoSelectedAssetManager.m in Sources */,
 				658075301F6EDB62002408A5 /* CKPhotoCollectionFlowLayout.m in Sources */,
+				65A824B21F6F5CB80087EC13 /* CLDemoCollectionViewCell.m in Sources */,
 				658075401F6EDB62002408A5 /* CKPhotoCollectionViewCell.m in Sources */,
-				654F87671F6ED6C000B3CC3A /* RootViewController.m in Sources */,
 				658075371F6EDB62002408A5 /* CKPhotoAlbumDetailController.m in Sources */,
 				651B29681F6EC1730085BCE3 /* AppDelegate.m in Sources */,
 				658075391F6EDB62002408A5 /* CKPhotoCameraController.m in Sources */,
