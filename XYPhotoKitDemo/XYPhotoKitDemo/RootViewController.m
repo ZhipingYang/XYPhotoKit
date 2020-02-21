@@ -7,20 +7,15 @@
 //
 
 #import "RootViewController.h"
-#import <CLDebugKit/XYDebugViewManager.h>
-#import "CKPhotoMultiCameraPicker.h"
-#import "CKPhotoMultiImagePicker.h"
-#import "CLDemoCollectionViewCell.h"
+#import "XYPhotoMultiCameraPicker.h"
+#import "XYPhotoMultiImagePicker.h"
+#import "XYDemoCollectionViewCell.h"
 
-@interface RootViewController ()<CKPhotoMultiImagePickerDelegate, CKPhotoMultiImagePickerDataSource,
-								CKPhotoMultiCameraPickerDelegate, CKPhotoMultiCameraPickerDataSource,
+@interface RootViewController ()<XYPhotoMultiImagePickerDelegate, XYPhotoMultiImagePickerDataSource,
+								XYPhotoMultiCameraPickerDelegate, XYPhotoMultiCameraPickerDataSource,
 								UICollectionViewDataSource, UICollectionViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UISwitch *debugSwitch;
-
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
-
-
 
 @property (weak, nonatomic) IBOutlet UISegmentedControl *mediaType;
 @property (weak, nonatomic) IBOutlet UITextField *maxNumber;
@@ -34,18 +29,9 @@
 
 @implementation RootViewController
 
-- (void)viewDidLoad {
-	[super viewDidLoad];
-	[[XYDebugViewManager sharedInstance] setIsDebugging:_debugSwitch.on];
-}
-
-- (IBAction)switchChange:(UISwitch *)sender {
-	[[XYDebugViewManager sharedInstance] setIsDebugging:sender.on];
-}
-
 - (void)showCameraPicker
 {
-	CKPhotoMultiCameraPicker *camera = [[CKPhotoMultiCameraPicker alloc] init];
+	XYPhotoMultiCameraPicker *camera = [[XYPhotoMultiCameraPicker alloc] init];
 	camera.pickerDelegate = self;
 	camera.pickerDataSource = self;
 	camera.maxNumberOfAssets = [self.maxNumber.text integerValue];
@@ -55,7 +41,7 @@
 
 - (void)showImagePicker
 {
-	CKPhotoMultiImagePicker *multiImagePicker = [[CKPhotoMultiImagePicker alloc] init];
+	XYPhotoMultiImagePicker *multiImagePicker = [[XYPhotoMultiImagePicker alloc] init];
 	multiImagePicker.pickerDelegate = self;
 	multiImagePicker.pickerDataSource = self;
 	
@@ -82,9 +68,9 @@
 	}
 }
 
-#pragma mark - CKPhotoMultiCameraPickerDelegate, CKPhotoMultiCameraPickerDataSource
+#pragma mark - XYPhotoMultiCameraPickerDelegate, XYPhotoMultiCameraPickerDataSource
 
-- (void)multiCameraPicker:(CKPhotoMultiCameraPicker *)multiImagePicker selectedAssets:(NSArray<PHAsset *> *)assets
+- (void)multiCameraPicker:(XYPhotoMultiCameraPicker *)multiImagePicker selectedAssets:(NSArray<PHAsset *> *)assets
 {
 	_selectedAssets = assets.copy;
 	[self.collectionView reloadData];
@@ -96,9 +82,9 @@
 	return _selectedAssets;
 }
 
-#pragma mark - CKPhotoMultiImagePickerDelegate, CKPhotoMultiImagePickerDataSource
+#pragma mark - XYPhotoMultiImagePickerDelegate, XYPhotoMultiImagePickerDataSource
 
-- (void)multiImagePicker:(CKPhotoMultiImagePicker *)multiImagePicker selectedAssets:(NSArray<PHAsset *> *)assets
+- (void)multiImagePicker:(XYPhotoMultiImagePicker *)multiImagePicker selectedAssets:(NSArray<PHAsset *> *)assets
 {
 	_selectedAssets = assets;
 	[self.collectionView reloadData];
@@ -122,7 +108,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-	CLDemoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([CLDemoCollectionViewCell class]) forIndexPath:indexPath];
+	XYDemoCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:NSStringFromClass([XYDemoCollectionViewCell class]) forIndexPath:indexPath];
 	if (indexPath.row == _selectedAssets.count) {
 		cell.imageVew.image = [UIImage imageNamed:@"add"];
 	} else {
