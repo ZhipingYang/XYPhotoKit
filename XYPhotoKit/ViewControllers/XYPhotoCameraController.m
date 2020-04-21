@@ -52,7 +52,14 @@
 			[self.view addSubview:self.imagePicker.view];
 			[self addChildViewController:self.imagePicker];
 			[self.imagePicker didMoveToParentViewController:self];
-		}
+            
+            [NSLayoutConstraint activateConstraints:@[
+                [_imagePicker.view.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],
+                [_imagePicker.view.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor],
+                [_imagePicker.view.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor],
+                [_imagePicker.view.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor],
+            ]];
+        }
 	} else {
         [UIAlertController xy_showTitle:nil message:@"该设备不支持相机功能"];
 	}
@@ -65,11 +72,6 @@
 	[self.view addSubview:_overlayView];
     
     [NSLayoutConstraint activateConstraints:@[
-        [_imagePicker.view.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],
-        [_imagePicker.view.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor],
-        [_imagePicker.view.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor],
-        [_imagePicker.view.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor],
-        
         [_overlayView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],
         [_overlayView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor],
         [_overlayView.topAnchor constraintEqualToAnchor:self.view.topAnchor],
@@ -95,7 +97,13 @@
             dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
 				PHAsset *asset = [PHAsset xy_getTheCloestAsset];
                 dispatch_async(dispatch_get_main_queue(), ^{
-					[[XYPhotoSelectedAssetManager sharedManager] addSelectedAsset:asset];
+                    XYPhotoSelectedAssetManager *sharedManager = XYPhotoSelectedAssetManager.sharedManager;
+                    if (sharedManager.maxNumberOfAssets == 1) {
+                        [sharedManager resetSelectedAsset:@[asset]];
+                        [self finishedCameraOverlayView:nil];
+                    } else {
+                        [sharedManager addSelectedAsset:asset];
+                    }
 				});
 			});
 		} else {
@@ -112,9 +120,9 @@
 {
 	// 限制保护
 	XYPhotoSelectedAssetManager *manager = [XYPhotoSelectedAssetManager sharedManager];
-	if (manager.maxNumberOfAssets != 0 && manager.maxNumberOfAssets <= manager.selectedAssets.count) {
-		NSString *tip = manager.maxNumberLimitText.xy_isEmpty ? @"已达到最大照片数限制" : manager.maxNumberLimitText;
-        [UIAlertController xy_showTitle:nil message:tip];
+	if (manager.maxNumberOfAssets != 0 && manager.maxNumberOfAssets != 1 && manager.maxNumberOfAssets <= manager.selectedAssets.count) {
+        NSString *tip = (manager.maxNumberLimitText ?: @"").xy_isEmpty ? @"已达到最大照片数限制" : manager.maxNumberLimitText;
+        [UIAlertController xy_showTitle:@"友情提示" message:tip];
 		return;
 	}
 	

@@ -79,7 +79,7 @@
 
 - (NSArray<PHAsset *> *)multiCameraPickerLoadPresetSelectedAssets
 {
-	return _selectedAssets;
+    return _selectedAssets;
 }
 
 #pragma mark - XYPhotoMultiImagePickerDelegate, XYPhotoMultiImagePickerDataSource

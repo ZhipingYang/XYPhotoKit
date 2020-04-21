@@ -17,7 +17,7 @@
 @interface XYPhotoCollectionDataSource () <PHPhotoLibraryChangeObserver, UICollectionViewDataSource, UICollectionViewDelegate>
 
 @property (nonatomic, weak) UICollectionView *collectionView;
-@property (nonatomic, copy) PHFetchResult *results;
+@property (nonatomic, copy) PHFetchResult<PHAsset *> *results;
 @property (nonatomic, strong) PHCachingImageManager *imageManager;
 @property (nonatomic) CGRect previousPreheatRect;
 
@@ -238,10 +238,9 @@ static NSString *const XYPhotoCollectionDataSourceCellReuseIdentifier = @"XYPhot
 	// 单一选择时，无需查看大图
 	BOOL isSingleSelected = [XYPhotoSelectedAssetManager sharedManager].maxNumberOfAssets == 1;
 	if (isSingleSelected && [[XYPhotoSelectedAssetManager sharedManager].delegate respondsToSelector:@selector(doneSelectingAssets)]) {
-		if ([[XYPhotoSelectedAssetManager sharedManager] addSelectedAsset:self.results[indexPath.row]]) {
-			[[XYPhotoSelectedAssetManager sharedManager].delegate doneSelectingAssets];
-		}
-	} else if ([self.delegate respondsToSelector:@selector(assetCollectionDataSource:selectedIndex:inFetchResult:)]) {
+        [[XYPhotoSelectedAssetManager sharedManager] resetSelectedAsset:@[_results[indexPath.row]]];
+        [[XYPhotoSelectedAssetManager sharedManager].delegate doneSelectingAssets];
+    } else if ([self.delegate respondsToSelector:@selector(assetCollectionDataSource:selectedIndex:inFetchResult:)]) {
 		[self.delegate assetCollectionDataSource:self selectedIndex:indexPath.row inFetchResult:self.results];
 	}
 }

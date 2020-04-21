@@ -165,9 +165,7 @@
             [self.bottomPreview.heightAnchor constraintEqualToConstant:60],
             
             [self.selectedScriptLabel.topAnchor constraintEqualToAnchor:self.bottomPreview.bottomAnchor],
-            [self.selectedScriptLabel.leadingAnchor constraintEqualToAnchor:self.bottomContentView.leadingAnchor constant:8],
-            [self.selectedScriptLabel.trailingAnchor constraintEqualToAnchor:self.bottomContentView.trailingAnchor constant:8],
-            [self.selectedScriptLabel.heightAnchor constraintEqualToConstant:14],\
+            [self.selectedScriptLabel.trailingAnchor constraintEqualToAnchor:self.bottomContentView.trailingAnchor constant:-8]
         ]];
         [self selectedAssetsChanged];
     };

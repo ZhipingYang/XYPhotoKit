@@ -66,7 +66,7 @@
     } else if (self.selectedAssetsMutableArray.count < self.maxNumberOfAssets) {
         return YES;
     } else {
-		NSString *tip = self.maxNumberLimitText.xy_isEmpty ? @"已达到最大照片数限制" : self.maxNumberLimitText;
+        NSString *tip = (self.maxNumberLimitText ?: @"").xy_isEmpty ? @"已达到最大照片数限制" : self.maxNumberLimitText;
         [UIAlertController xy_showTitle:@"友情提示" message:tip];
 		return NO;
 	}

@@ -1,8 +1,19 @@
-# CLPhotoKit
+# XYPhotoKit
 
 基于PhotoKit开发的照片获取方式，支持多选单选（对应的UI略有不同），支持iCloud获取相册等
 
-<img width="200" src="https://user-images.githubusercontent.com/9360037/30523492-dc300e14-9c14-11e7-81f2-1b4eb9bc3ddb.jpg"> <img width="200" src="https://user-images.githubusercontent.com/9360037/30523493-dc6556b4-9c14-11e7-8489-b7e497f1a197.jpg"> <img width="200" src="https://user-images.githubusercontent.com/9360037/30523494-dc81896a-9c14-11e7-9432-e246dc6ad533.jpg"> <img width="200" src="https://user-images.githubusercontent.com/9360037/30523495-dc826b32-9c14-11e7-855b-58f461684d4b.jpg"> <img width="200" src="https://user-images.githubusercontent.com/9360037/30523496-dc832888-9c14-11e7-9136-a21130a2a437.jpg"> <img width="200" src="https://user-images.githubusercontent.com/9360037/30523498-dc8abe22-9c14-11e7-8bc0-ca1c7a44342c.jpg"> <img width="200" src="https://user-images.githubusercontent.com/9360037/30523497-dc8920f8-9c14-11e7-932a-ab077ddd42d3.jpg"> <img width="200" src="https://user-images.githubusercontent.com/9360037/30523499-dc973c06-9c14-11e7-8f15-cc68fe1a394f.jpg"> 
+<p align="center">
+<img width= 24.6% src="https://user-images.githubusercontent.com/9360037/79872498-74b01600-8418-11ea-99b5-9b2dafd8bc31.jpeg">
+<img width= 24.6% src="https://user-images.githubusercontent.com/9360037/79872488-6eba3500-8418-11ea-89d5-5b481949612f.jpeg">
+<img width= 24.6% src="https://user-images.githubusercontent.com/9360037/79872506-7679d980-8418-11ea-8f83-e5ace8d8b87f.jpeg">
+<img width=24.8% src="https://user-images.githubusercontent.com/9360037/79872515-77ab0680-8418-11ea-80cc-38edf2da176e.jpeg">
+
+<img width= 24.6% src="https://user-images.githubusercontent.com/9360037/79879298-163b6580-8421-11ea-9e7d-4dcc4a177267.jpeg">
+<img width= 24.6% src="https://user-images.githubusercontent.com/9360037/79879319-1c314680-8421-11ea-9987-b2d9d7d1db1d.jpeg">
+<img width= 24.6% src="https://user-images.githubusercontent.com/9360037/79872504-7548ac80-8418-11ea-9cf7-8973a403dd0f.jpeg">
+<img width= 24.6% src="https://user-images.githubusercontent.com/9360037/79872508-77127000-8418-11ea-9fb6-3bd9e344d7c7.jpeg">
+
+</p>
 
 ## 使用方式
 
@@ -22,7 +33,7 @@
 
 ```objc
 
-CKPhotoMultiImagePicker *multiImagePicker = [[CKPhotoMultiImagePicker alloc] init];
+XYPhotoMultiImagePicker *multiImagePicker = [[XYPhotoMultiImagePicker alloc] init];
 multiImagePicker.pickerDelegate = self;
 multiImagePicker.pickerDataSource = self;
 multiImagePicker.mediaType = PHAssetMediaTypeImage; // 支持图片和视屏
@@ -35,7 +46,7 @@ multiImagePicker.allowNetRequestIfiCloud = YES; // 支持iCloud网络获取
 
 #pragma mark - CKPhotoMultiImagePickerDelegate, CKPhotoMultiImagePickerDataSource
 
-- (void)multiImagePicker:(CKPhotoMultiImagePicker *)multiImagePicker selectedAssets:(NSArray<PHAsset *> *)assets
+- (void)multiImagePicker:(XYPhotoMultiImagePicker *)multiImagePicker selectedAssets:(NSArray<PHAsset *> *)assets
 {
 	_selectedAssets = assets;
 
@@ -54,24 +65,24 @@ multiImagePicker.allowNetRequestIfiCloud = YES; // 支持iCloud网络获取
 | 属性  | 说明 | 
 | --- | --- |
 | **Controller** | |
-| CKPhotoMultiCameraPicker | NavigationController,承载CKPhotoCameraController、相机相关参数初始化工作及 delegate & datasource |
-| CKPhotoCameraController | 基于ImagePickerController，需要有相机和相册两个权限做交互，可进入大图预览 |
-| CKPhotoPreviewViewController | 大图预览（CKHorizontalScrollView）|
+| XYPhotoMultiCameraPicker | NavigationController,承载CKPhotoCameraController、相机相关参数初始化工作及 delegate & datasource |
+| XYPhotoCameraController | 基于ImagePickerController，需要有相机和相册两个权限做交互，可进入大图预览 |
+| XYPhotoPreviewViewController | 大图预览（CKHorizontalScrollView）|
 
 ### 用法
 
 ```objc
 
-CKPhotoMultiCameraPicker *camera = [[CKPhotoMultiCameraPicker alloc] init];
+XYPhotoMultiCameraPicker *camera = [[XYPhotoMultiCameraPicker alloc] init];
 camera.pickerDelegate = self;
 camera.pickerDataSource = self;
 camera.maxNumberOfAssets = 9; // 最多选择九张照片
 camera.allowNetRequestIfiCloud = YES; // 支持iCloud网络获取
 [self presentViewController:camera animated:YES completion:nil];
 
-#pragma mark - CKPhotoMultiCameraPickerDelegate, CKPhotoMultiCameraPickerDataSource
+#pragma mark - XYPhotoMultiCameraPickerDelegate, XYPhotoMultiCameraPickerDataSource
 
-- (void)multiCameraPicker:(CKPhotoMultiCameraPicker *)multiImagePicker selectedAssets:(NSArray<PHAsset *> *)assets
+- (void)multiCameraPicker:(XYPhotoMultiCameraPicker *)multiImagePicker selectedAssets:(NSArray<PHAsset *> *)assets
 {
 	_selectedAssets = assets.copy;
 	NSLog(@"%@",assets);
@@ -92,18 +103,19 @@ camera.allowNetRequestIfiCloud = YES; // 支持iCloud网络获取
 > 闭包中可能会有多次回调（本地图片）越来越高清，当网络请求时非特殊情况下不可直接获取原图尺寸`CGSizeMake(asset.pixelWidth, asset.pixelHeight)`
 
 ```objc
-
 PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
 options.networkAccessAllowed = YES;
 
-_imageRequestId = [self.imageManager requestImageForAsset:_asset targetSize:targetSize contentMode:PHImageContentModeAspectFill options:options resultHandler:^(UIImage *result, NSDictionary *info) {
+_imageRequestId = [self.imageManager requestImageForAsset:asset
+                                               targetSize:_targetSize
+                                              contentMode:PHImageContentModeAspectFit
+                                                  options:options
+                                            resultHandler:^(UIImage *result, NSDictionary *info) {
 	BOOL downloadFinined = ![[info objectForKey:PHImageCancelledKey] boolValue]
 							&& ![info objectForKey:PHImageErrorKey]
 							&& ![[info objectForKey:PHImageResultIsDegradedKey] boolValue];
-	if (downloadFinined) {
-		_imageRequestId = 0;
-	}
-	_imageView.image = result;
+    if (downloadFinined) { self.imageRequestId = 0; }
+    if (result) { self.imageView.image = result; }
 }];
 ```
 
