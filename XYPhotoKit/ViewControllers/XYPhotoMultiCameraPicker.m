@@ -19,8 +19,9 @@
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
 	if (self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil]) {
-		[self setViewControllers:@[[[XYPhotoCameraController alloc] init]] animated:NO];
-		self.allowNetRequestIfiCloud = NO;
+        self.allowNetRequestIfiCloud = false;
+        self.modalPresentationStyle = UIModalPresentationFullScreen;
+        [self setViewControllers:@[[[XYPhotoCameraController alloc] init]] animated:NO];
 		[[XYPhotoSelectedAssetManager sharedManager] resetManager];
 		[XYPhotoSelectedAssetManager sharedManager].mediaType = PHAssetMediaTypeImage;
 		[XYPhotoSelectedAssetManager sharedManager].delegate = self;

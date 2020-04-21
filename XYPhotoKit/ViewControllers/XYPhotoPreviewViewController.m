@@ -11,11 +11,11 @@
 #import "XYPhotoHorizontalScrollItemView.h"
 
 @interface XYPhotoPreviewViewController ()<PHPhotoLibraryChangeObserver, XYPhotoHorizontalScrollViewDelegate, XYPhotoHorizontalScrollViewDataSource, XYPhotoPreviewOverlayViewDelegate, XYPhotoHorizontalScrollItemViewDelegate>
-{
-	XYPhotoHorizontalScrollView *_scrollView;
-	XYPhotoPreviewOverlayView *_overLayView;
-	BOOL _navigationBarHiddenBeforeEnter;
-}
+
+@property (nonatomic, strong) XYPhotoHorizontalScrollView *scrollView;
+@property (nonatomic, strong) XYPhotoPreviewOverlayView *overLayView;
+@property (nonatomic, assign) BOOL navigationBarHiddenBeforeEnter;
+
 @end
 
 @implementation XYPhotoPreviewViewController
@@ -37,7 +37,6 @@
 - (void)setSelectedIndex:(NSInteger)selectedIndex
 {
 	_selectedIndex = selectedIndex;
-//    self.disableBackGesture = selectedIndex!=0;
 	if (_scrollView) {
 		[_scrollView setCurrentIndex:_selectedIndex animated:NO];
 		[_overLayView updateSelectedAsset:_fetchResult ? _fetchResult[selectedIndex]:_photos[selectedIndex]];
@@ -48,10 +47,6 @@
 - (BOOL)shouldAutorotate
 {
 	return NO;
-}
-
-- (UIStatusBarStyle)preferredStatusBarStyle {
-	return UIStatusBarStyleLightContent;
 }
 
 - (BOOL)prefersStatusBarHidden {
@@ -66,32 +61,43 @@
 {
 	[super loadView];
 	self.view.backgroundColor = [UIColor blackColor];
-	self.view.clipsToBounds = YES;
+	self.view.clipsToBounds = true;
 	
 	_scrollView = [[XYPhotoHorizontalScrollView alloc] initWithFrame:CGRectMake(-5, 0, self.view.frame.size.width+10, self.view.frame.size.height)];
-	_scrollView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
+	_scrollView.translatesAutoresizingMaskIntoConstraints = false;
+    _scrollView.autoresizingMask = UIViewAutoresizingFlexibleHeight;
 	_scrollView.backgroundColor = [UIColor blackColor];
 	_scrollView.horizontalDelegate = self;
 	_scrollView.horizontalDataSource = self;
 	[self.view addSubview:_scrollView];
 	
 	_overLayView = [[XYPhotoPreviewOverlayView alloc] initWithFrame:self.view.bounds];
+    _overLayView.translatesAutoresizingMaskIntoConstraints = false;
 	_overLayView.delegate = self;
 	[self.view addSubview:_overLayView];
+    
+    [NSLayoutConstraint activateConstraints:@[
+        [_scrollView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor constant:-5],
+        [_scrollView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor constant:5],
+        [_scrollView.topAnchor constraintEqualToAnchor:self.view.topAnchor],
+        [_scrollView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor],
+        [_overLayView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],
+        [_overLayView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor],
+        [_overLayView.topAnchor constraintEqualToAnchor:self.view.topAnchor],
+        [_overLayView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor],
+    ]];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
 	[super viewWillAppear:animated];
 	_navigationBarHiddenBeforeEnter = self.navigationController.isNavigationBarHidden;
-	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
 	[self.navigationController setNavigationBarHidden:YES animated:animated];
 }
 
 - (void)viewWillDisappear:(BOOL)animated
 {
 	[super viewWillDisappear:animated];
-	[[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleDefault];
 	[self.navigationController setNavigationBarHidden:_navigationBarHiddenBeforeEnter animated:animated];
 }
 
@@ -124,7 +130,6 @@
 - (void)horizontalScrollView:(XYPhotoHorizontalScrollView *)scroller didSelectIndex:(NSInteger)index
 {
 	_selectedIndex = index;
-//    self.disableBackGesture = index!=0;
 	PHAsset *asset = _fetchResult ? _fetchResult[index] : _photos[index];
 	[_overLayView updateSelectedAsset:asset];
 	[_overLayView updateTitleAtIndex:_selectedIndex sum:_fetchResult ? _fetchResult.count:_photos.count];
@@ -141,12 +146,12 @@
 		PHFetchResultChangeDetails *collectionChanges = [changeInstance changeDetailsForFetchResult:self.fetchResult];
 		if (collectionChanges) {
 			self.fetchResult = [collectionChanges fetchResultAfterChanges];
-			if (_selectedIndex>=self.fetchResult.count) {
-				_selectedIndex = self.fetchResult.count-1;
+            if (self.selectedIndex>=self.fetchResult.count) {
+				self.selectedIndex = self.fetchResult.count-1;
 			}
-			[_overLayView updateSelectedAsset:self.fetchResult[_selectedIndex]];
-			[_scrollView reloadData];
-			_scrollView.currentIndex = _selectedIndex;
+			[self.overLayView updateSelectedAsset:self.fetchResult[self.selectedIndex]];
+            [self.scrollView reloadData];
+			self.scrollView.currentIndex = self.selectedIndex;
 		}
 	});
 }
@@ -166,7 +171,7 @@
 		[_fetchResult enumerateObjectsUsingBlock:^(PHAsset * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
 			if ([obj.localIdentifier isEqualToString:asset.localIdentifier]) {
 				[self setSelectedIndex:idx];
-				*stop = YES;
+				*stop = true;
 			}
 		}];
 	} else if ([_photos containsObject:asset]) {
@@ -179,7 +184,7 @@
 - (void)didTapped:(XYPhotoHorizontalScrollItemView *)scrollItemView;
 {
 	[UIView animateWithDuration:0.3 animations:^{
-		_overLayView.alpha = _overLayView.alpha<=0 ? 1:0;
+        self.overLayView.alpha = self.overLayView.alpha<=0 ? 1:0;
 	}];
 }
 

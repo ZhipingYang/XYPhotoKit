@@ -34,10 +34,10 @@ static const NSInteger preloadanswerNum = 1;
     if (self) {
         // Initialization code
         self.backgroundColor = [UIColor clearColor];
-        self.pagingEnabled = YES;
-        self.scrollsToTop = NO;
-        self.showsVerticalScrollIndicator = NO;
-        self.showsHorizontalScrollIndicator = NO;
+        self.pagingEnabled = true;
+        self.scrollsToTop = false;
+        self.showsVerticalScrollIndicator = false;
+        self.showsHorizontalScrollIndicator = false;
         self.reusableViews = [NSMutableSet set];
         self.delegate = self;
         
@@ -211,8 +211,8 @@ static const NSInteger preloadanswerNum = 1;
             [self scrollRectToVisible:rect animated:NO];
         } completion:^(BOOL finished){
             if (finished&&event) {
-                if ([horizontalDelegate respondsToSelector:@selector(horizontalScrollView:didSelectIndex:)]) {
-                    [horizontalDelegate horizontalScrollView:self didSelectIndex:currentIndex];
+                if ([self->horizontalDelegate respondsToSelector:@selector(horizontalScrollView:didSelectIndex:)]) {
+                    [self->horizontalDelegate horizontalScrollView:self didSelectIndex:self->currentIndex];
                 }
             }
         }];

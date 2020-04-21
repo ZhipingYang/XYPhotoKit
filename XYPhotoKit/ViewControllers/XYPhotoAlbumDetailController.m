@@ -38,27 +38,33 @@
 - (void)loadView
 {
 	[super loadView];
+    
 	UIBarButtonItem *cancel = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(close)];
 	self.navigationItem.rightBarButtonItems = @[cancel];
 	
-	self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:[[XYPhotoCollectionFlowLayout alloc] init]];
+    XYPhotoCollectionFlowLayout *layout = [[XYPhotoCollectionFlowLayout alloc] init];
+	self.collectionView = [[UICollectionView alloc] initWithFrame:self.view.frame collectionViewLayout:layout];
+    self.collectionView.translatesAutoresizingMaskIntoConstraints = false;
+    self.collectionView.allowsMultipleSelection = true;
+    [self.view addSubview:self.collectionView];
+    
+    self.bottomView = [[XYPhotoSelectedAssetPreviewView alloc] initWithFrame:self.view.frame];
+    self.bottomView.translatesAutoresizingMaskIntoConstraints = false;
+    self.bottomView.delegate = self;
+    [self.view addSubview:self.bottomView];
+
     if (@available(iOS 13.0, *)) {
         self.collectionView.backgroundColor = [UIColor systemBackgroundColor];
+        self.view.backgroundColor = [UIColor systemBackgroundColor];
     } else {
         self.collectionView.backgroundColor = [UIColor whiteColor];
+        self.view.backgroundColor = [UIColor whiteColor];
     }
-	self.collectionView.allowsMultipleSelection = YES;
-	[self.view addSubview:self.collectionView];
-	
-	self.bottomView = [[XYPhotoSelectedAssetPreviewView alloc] initWithFrame:self.view.frame];
-	self.bottomView.delegate = self;
-	[self.view addSubview:self.bottomView];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	
 	[self addConstrains];
 	
 	// 等loadView完成后调用
@@ -69,29 +75,24 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-	
-    self.dataSource.shouldCache = YES;
+    self.dataSource.shouldCache = true;
 }
 
 - (void)addConstrains
 {
-	self.collectionView.translatesAutoresizingMaskIntoConstraints = NO;
-	self.bottomView.translatesAutoresizingMaskIntoConstraints = NO;
-	
 	BOOL isSingleSelected = [XYPhotoSelectedAssetManager sharedManager].maxNumberOfAssets == 1;
-	if (isSingleSelected) {
-		NSDictionary *layoutViews = @{ @"collectionView": self.collectionView };
-		[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[collectionView]|" options:0 metrics:nil views:layoutViews]];
-		[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[collectionView]|" options:0 metrics:nil views:layoutViews]];
-	} else {
-		NSDictionary *layoutViews = @{ @"collectionView": self.collectionView };
-		[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[collectionView]-60-|" options:0 metrics:nil views:layoutViews]];
-		[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[collectionView]|" options:0 metrics:nil views:layoutViews]];
-		
-		[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[bottomview]|" options:0 metrics:nil views:@{@"bottomview":self.bottomView}]];
-		[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[bottomview(60)]|" options:0 metrics:nil views:@{@"bottomview":self.bottomView}]];
-	}
-	self.bottomView.hidden = isSingleSelected;
+    self.bottomView.hidden = isSingleSelected;
+    
+    [NSLayoutConstraint activateConstraints:@[
+        [_collectionView.leadingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.leadingAnchor],
+        [_collectionView.trailingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.trailingAnchor],
+        [_collectionView.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor],
+        [_collectionView.bottomAnchor constraintEqualToAnchor:self.bottomView.topAnchor],
+        [_bottomView.leadingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.leadingAnchor],
+        [_bottomView.trailingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.trailingAnchor],
+        [_bottomView.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor],
+        [_bottomView.heightAnchor constraintEqualToConstant:isSingleSelected ? 0:60]
+    ]];
 }
 
 - (void)close

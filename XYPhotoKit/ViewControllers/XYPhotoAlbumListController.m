@@ -52,31 +52,35 @@
 	if (!self.tableView) {
 		self.tableView = [[UITableView alloc] initWithFrame:self.view.frame style:UITableViewStylePlain];
 		self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+        self.tableView.translatesAutoresizingMaskIntoConstraints = false;
 		[self.view addSubview:self.tableView];
-		self.tableView.translatesAutoresizingMaskIntoConstraints = NO;
-		NSDictionary *layoutViews = @{ @"tableView": self.tableView };
-		[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[tableView]|"
-																		  options:0
-																		  metrics:nil
-																			views:layoutViews]];
-		[self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[tableView]|"
-																		  options:0
-																		  metrics:nil
-																			views:layoutViews]];
-	}
-	
-	self.dataSource = [[XYPhotoTableDataSource alloc] initWithTableView:self.tableView];
-	self.dataSource.delegate = self;
+    }
+    
+    self.dataSource = [[XYPhotoTableDataSource alloc] initWithTableView:self.tableView];
+    self.dataSource.delegate = self;
+    
+    [NSLayoutConstraint activateConstraints:@[
+        [_tableView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],
+        [_tableView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor],
+        [_tableView.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor],
+        [_tableView.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor],
+    ]];
 }
 
 - (void)showPhotoAccessHelpView
 {
 	[UIAlertController xy_showAlertPhotoSettingIfUnauthorized];
 	UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage xy_imageWithName:@"cl_photo_picker_inaccessible"]];
-	imageView.frame = self.view.bounds;
-	imageView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    imageView.translatesAutoresizingMaskIntoConstraints = false;
 	imageView.contentMode = UIViewContentModeScaleAspectFit;
 	[self.view addSubview:imageView];
+    
+    [NSLayoutConstraint activateConstraints:@[
+        [imageView.leadingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.leadingAnchor],
+        [imageView.trailingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.trailingAnchor],
+        [imageView.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor],
+        [imageView.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor],
+    ]];
 }
 
 - (void)close
@@ -96,7 +100,7 @@
 
 - (void)assetTableDataSource:(XYPhotoTableDataSource *)dataSource selectedAssetCollection:(PHAssetCollection *)assetCollection
 {
-    PHFetchResult *fetchResult = [PHFetchResult xy_fetchResultWithAssetCollection:assetCollection mediaType:[XYPhotoSelectedAssetManager sharedManager].mediaType];
+    PHFetchResult *fetchResult = [PHFetchResult xy_fetchResultWithAssetCollection:assetCollection mediaType:XYPhotoSelectedAssetManager.sharedManager.mediaType];
     XYPhotoAlbumDetailController *assetsViewController = [[XYPhotoAlbumDetailController alloc] initWithFetchResult:fetchResult];
     assetsViewController.title = assetCollection.localizedTitle;
     [self.navigationController pushViewController:assetsViewController animated:YES];

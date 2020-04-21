@@ -12,10 +12,11 @@
 #import "XYPhotoDataCategory.h"
 
 @interface XYPhotoBottomPreviewCell()
-{
-    PHImageRequestID _imageRequestId;
-}
+
 @property (nonatomic, strong) PHImageManager *imageManager;
+
+@property (nonatomic, assign) PHImageRequestID imageRequestId;
+
 @end
 
 @implementation XYPhotoBottomPreviewCell
@@ -26,7 +27,7 @@
         _imageView = [[UIImageView alloc] initWithFrame:self.contentView.bounds];
         _imageView.contentMode = UIViewContentModeScaleAspectFill;
         _imageView.image = [UIImage xy_imageWithName:@"cl_photokit_placeholder"];
-        _imageView.clipsToBounds = YES;
+        _imageView.clipsToBounds = true;
         if (@available(iOS 13.0, *)) {
             _imageView.backgroundColor = [UIColor systemBackgroundColor];
         } else {
@@ -50,7 +51,7 @@
 - (void)prepareForReuse
 {
     [super prepareForReuse];
-    self.highlighted = NO;
+    self.highlighted = false;
     self.imageView.image = [UIImage xy_imageWithName:@"cl_photokit_placeholder"];
     if (_imageRequestId!=0) {
         [self.imageManager cancelImageRequest:_imageRequestId];
@@ -60,7 +61,7 @@
 - (void)setHighlighted:(BOOL)highlighted
 {
     [super setHighlighted:highlighted];
-    self.layer.borderColor = highlighted ? [UIColor blueColor].CGColor : [UIColor lightGrayColor].CGColor;
+    self.layer.borderColor = highlighted ? [UIColor systemBlueColor].CGColor : [UIColor lightGrayColor].CGColor;
 }
 
 - (void)setAsset:(PHAsset *)asset indexPath:(NSIndexPath *)indexPath collectionView:(UICollectionView *)collectionView
@@ -84,9 +85,9 @@
                                                 resultHandler:^(UIImage *result, NSDictionary *info) {
         NSInteger imageRequestId = [[info objectForKey:PHImageResultRequestIDKey] integerValue];
         if (imageRequestId>0) {
-            self->_imageRequestId = 0;
+            self.imageRequestId = 0;
         }
-        self->_imageView.image = result ?: [UIImage xy_imageWithName:@"cl_photokit_placeholder"];
+        self.imageView.image = result ?: [UIImage xy_imageWithName:@"cl_photokit_placeholder"];
     }];
 }
 

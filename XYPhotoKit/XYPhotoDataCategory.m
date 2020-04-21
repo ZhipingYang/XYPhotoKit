@@ -9,7 +9,7 @@
 #import "XYPhotoDataCategory.h"
 
 @import AVFoundation;
-@import AssetsLibrary;
+@import Photos;
 
 @implementation NSString (CLPhotoKit)
 
@@ -94,14 +94,14 @@
 
 + (BOOL)xy_showAlertPhotoSettingIfUnauthorized
 {
-	ALAuthorizationStatus photoStatus = [ALAssetsLibrary authorizationStatus];
-	if (photoStatus == ALAuthorizationStatusRestricted || photoStatus == ALAuthorizationStatusDenied) {
-		NSString *mes = photoStatus==ALAuthorizationStatusDenied ? @"该功能需要相册服务，你可以在设置中打开对App的相册服务":@"该设备的相册功能被限制了";
+    PHAuthorizationStatus photoStatus = PHPhotoLibrary.authorizationStatus;
+	if (photoStatus == PHAuthorizationStatusRestricted || photoStatus == PHAuthorizationStatusDenied) {
+		NSString *mes = photoStatus==PHAuthorizationStatusDenied ? @"该功能需要相册服务，你可以在设置中打开对App的相册服务":@"该设备的相册功能被限制了";
 		UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"提示" message:mes preferredStyle:UIAlertControllerStyleAlert];
 		[alertController addAction:[UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleCancel handler:nil]];
-		if (photoStatus == ALAuthorizationStatusDenied) {
+		if (photoStatus == PHAuthorizationStatusDenied) {
 			[alertController addAction:[UIAlertAction actionWithTitle:@"去开启" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-				[[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+                [UIApplication.sharedApplication openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString] options:@{} completionHandler:nil];
 			}]];
 		}
 		[[UIApplication sharedApplication].xy_topViewController presentViewController:alertController animated:YES completion:nil];
@@ -119,7 +119,7 @@
 		[alertController addAction:[UIAlertAction actionWithTitle:@"知道了" style:UIAlertActionStyleCancel handler:nil]];
 		if (videoStatus == AVAuthorizationStatusDenied) {
 			[alertController addAction:[UIAlertAction actionWithTitle:@"去开启" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-				[[UIApplication sharedApplication] openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString]];
+                [UIApplication.sharedApplication openURL:[NSURL URLWithString:UIApplicationOpenSettingsURLString] options:@{} completionHandler:nil];
 			}]];
 		}
 		[[UIApplication sharedApplication].xy_topViewController presentViewController:alertController animated:YES completion:nil];

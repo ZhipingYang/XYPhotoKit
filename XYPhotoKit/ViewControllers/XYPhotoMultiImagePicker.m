@@ -26,11 +26,11 @@
 - (instancetype)init
 {
     if (self = [super init]) {
-		[self setViewControllers:@[[[XYPhotoAlbumListController alloc] init]] animated:NO];
-		[[XYPhotoSelectedAssetManager sharedManager] resetManager];
-		[XYPhotoSelectedAssetManager sharedManager].delegate = self;
-		self.allowNetRequestIfiCloud = NO;
-		self.navigationBar.tintColor = [UIColor blackColor];
+        self.modalPresentationStyle = UIModalPresentationFullScreen;
+        self.allowNetRequestIfiCloud = false;
+        [self setViewControllers:@[[[XYPhotoAlbumListController alloc] init]] animated:NO];
+        [[XYPhotoSelectedAssetManager sharedManager] resetManager];
+        [XYPhotoSelectedAssetManager sharedManager].delegate = self;
     }
     return self;
 }

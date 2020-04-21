@@ -23,6 +23,11 @@
 
 @property (nonatomic, strong) UILabel *badgeLabel;
 
+
+@property (nonatomic, strong) UIView *backView;
+@property (nonatomic, strong) NSLayoutConstraint *backViewBottomConstraint;
+@property (nonatomic, strong) NSLayoutConstraint *doneTrailConstraint;
+
 @end
 
 @implementation XYPhotoSelectedAssetPreviewView
@@ -42,10 +47,10 @@
 		self.assetArray = [XYPhotoSelectedAssetManager sharedManager].selectedAssets;
 		// 用于调整collection的cell布局（意义性不大，本可以忽略但是这边要保留，等同于`setAssetArray:`**不要去除这片脏代码**）
 		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-			_assetArray = [XYPhotoSelectedAssetManager sharedManager].selectedAssets;
-			_doneButton.enabled = _assetArray.count>0;
-			_badgeLabel.text = @(_assetArray.count).stringValue;
-			[_collectionView reloadData];
+            self.assetArray = [XYPhotoSelectedAssetManager sharedManager].selectedAssets;
+			self.doneButton.enabled = self.assetArray.count>0;
+			self.badgeLabel.text = @(self.assetArray.count).stringValue;
+			[self.collectionView reloadData];
 		});
     }
     return self;
@@ -53,48 +58,91 @@
 
 - (void)initBaseViews
 {
-	self.backgroundColor = [UIColor darkGrayColor];
-	
-	XYPhotoCollectionFlowLayout *layout = [[XYPhotoCollectionFlowLayout alloc] init];
-	layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
-	
-	// 预览已选择的assets
+    self.backgroundColor = [UIColor clearColor];
+    self.clipsToBounds = false;
+    self.layer.masksToBounds = false;
+    
+    _backView = [UIView new];
+    _backView.translatesAutoresizingMaskIntoConstraints = false;
+    _backView.backgroundColor = [UIColor darkGrayColor];
+    [self addSubview:_backView];
+	    
+    // 预览已选择的assets
+    XYPhotoCollectionFlowLayout *layout = [[XYPhotoCollectionFlowLayout alloc] init];
+    layout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
 	self.collectionView = [[UICollectionView alloc] initWithFrame:self.bounds collectionViewLayout:layout];
+    self.collectionView.translatesAutoresizingMaskIntoConstraints = false;
 	[self.collectionView registerClass:[XYPhotoBottomPreviewCell class] forCellWithReuseIdentifier:NSStringFromClass([XYPhotoBottomPreviewCell class])];
 	self.collectionView.backgroundColor = [UIColor clearColor];
-	self.collectionView.showsHorizontalScrollIndicator = NO;
-	self.collectionView.alwaysBounceHorizontal = YES;
+	self.collectionView.showsHorizontalScrollIndicator = false;
+	self.collectionView.alwaysBounceHorizontal = true;
 	self.collectionView.dataSource = self;
 	self.collectionView.delegate = self;
 	[self addSubview:self.collectionView];
-	self.collectionView.translatesAutoresizingMaskIntoConstraints = NO;
 	
 	// 完成按钮
 	self.doneButton = [UIButton buttonWithType:UIButtonTypeCustom];
-	[self.doneButton setBackgroundImage:[UIImage xy_imageWithColor:[UIColor blueColor]] forState:UIControlStateNormal];
-	[self.doneButton setBackgroundImage:[UIImage xy_imageWithColor:[UIColor lightGrayColor]] forState:UIControlStateDisabled];
-	self.doneButton.enabled = NO;
-	self.doneButton.layer.cornerRadius = 4;
-	self.doneButton.clipsToBounds = YES;
-	self.doneButton.titleLabel.font = [UIFont systemFontOfSize:14];
-	[self.doneButton setTitle:@"完成" forState:UIControlStateNormal];
-	[self.doneButton addTarget:[XYPhotoSelectedAssetManager sharedManager].delegate action:@selector(doneSelectingAssets) forControlEvents:UIControlEventTouchUpInside];
-	[self addSubview:self.doneButton];
-	self.doneButton.translatesAutoresizingMaskIntoConstraints = NO;
+    self.doneButton.translatesAutoresizingMaskIntoConstraints = false;
+    [self.doneButton setBackgroundImage:[UIImage xy_imageWithColor:[UIColor systemBlueColor]] forState:UIControlStateNormal];
+    [self.doneButton setBackgroundImage:[UIImage xy_imageWithColor:[UIColor lightGrayColor]] forState:UIControlStateDisabled];
+    self.doneButton.enabled = false;
+    self.doneButton.layer.cornerRadius = 4;
+    self.doneButton.clipsToBounds = true;
+    self.doneButton.titleLabel.font = [UIFont systemFontOfSize:14];
+    [self.doneButton setTitle:@"完成" forState:UIControlStateNormal];
+    [self.doneButton addTarget:[XYPhotoSelectedAssetManager sharedManager].delegate action:@selector(doneSelectingAssets) forControlEvents:UIControlEventTouchUpInside];
+    [self addSubview:self.doneButton];
 	
 	// 徽标
 	self.badgeLabel = [[UILabel alloc] init];
-	self.badgeLabel.text = @"0";
-	self.badgeLabel.backgroundColor = [UIColor whiteColor];
-	self.badgeLabel.textAlignment = NSTextAlignmentCenter;
-	self.badgeLabel.font = [UIFont systemFontOfSize:8];
-	self.badgeLabel.textColor = [UIColor blueColor];
-	self.badgeLabel.layer.cornerRadius = 9;
-	self.badgeLabel.clipsToBounds = YES;
-	[self addSubview:self.badgeLabel];
-	self.badgeLabel.translatesAutoresizingMaskIntoConstraints = NO;
+    self.badgeLabel.translatesAutoresizingMaskIntoConstraints = false;
+    self.badgeLabel.text = @"0";
+    self.badgeLabel.backgroundColor = [UIColor whiteColor];
+    self.badgeLabel.textAlignment = NSTextAlignmentCenter;
+    self.badgeLabel.font = [UIFont systemFontOfSize:8];
+    self.badgeLabel.textColor = [UIColor systemBlueColor];
+    self.badgeLabel.layer.cornerRadius = 9;
+    self.badgeLabel.clipsToBounds = true;
+    [self addSubview:self.badgeLabel];
+    
+    UIEdgeInsets safeInsets = UIApplication.sharedApplication.keyWindow.safeAreaInsets;
+    _backViewBottomConstraint = [_backView.bottomAnchor constraintEqualToAnchor:self.bottomAnchor constant:safeInsets.bottom];
+    _doneTrailConstraint = [_doneButton.trailingAnchor constraintEqualToAnchor:self.trailingAnchor];
 
-	self.hideControls = NO;
+    [NSLayoutConstraint activateConstraints:@[
+        [_backView.leadingAnchor constraintEqualToAnchor:self.leadingAnchor constant:-safeInsets.left],
+        [_backView.trailingAnchor constraintEqualToAnchor:self.trailingAnchor constant:safeInsets.right],
+        [_backView.topAnchor constraintEqualToAnchor:self.topAnchor],
+        _backViewBottomConstraint,
+        
+        [_collectionView.leadingAnchor constraintEqualToAnchor:self.leadingAnchor constant:8],
+        [_collectionView.topAnchor constraintEqualToAnchor:self.topAnchor constant:8],
+        [_collectionView.bottomAnchor constraintEqualToAnchor:self.bottomAnchor constant:-8],
+        [_collectionView.trailingAnchor constraintEqualToAnchor:_doneButton.leadingAnchor constant:-15],
+        
+        [_doneButton.widthAnchor constraintEqualToConstant:55],
+        [_doneButton.heightAnchor constraintEqualToConstant:30],
+        [_doneButton.centerYAnchor constraintEqualToAnchor:self.centerYAnchor],
+        _doneTrailConstraint,
+        
+        [_badgeLabel.widthAnchor constraintEqualToConstant:18],
+        [_badgeLabel.heightAnchor constraintEqualToConstant:18],
+        [_badgeLabel.trailingAnchor constraintEqualToAnchor:self.trailingAnchor constant:-6],
+        [_badgeLabel.centerYAnchor constraintEqualToAnchor:self.centerYAnchor constant:-12],
+    ]];
+    
+	self.hideControls = false;
+}
+
+- (void)setHideControls:(BOOL)hideControls
+{
+    _hideControls = hideControls;
+    _doneButton.hidden = hideControls;
+    _badgeLabel.hidden = hideControls;
+    _doneTrailConstraint.constant = hideControls ? (55+15-8) : -10;
+    
+    UIEdgeInsets safeInsets = UIApplication.sharedApplication.keyWindow.safeAreaInsets;
+    _backViewBottomConstraint.constant = hideControls ? 0 : safeInsets.bottom;
 }
 
 - (void)setAssetArray:(NSArray<PHAsset *> *)assetArray
@@ -113,45 +161,14 @@
 - (void)setCurrentIndex:(NSInteger)currentIndex
 {
 	// 无符号与有符号比较出现bug ((NSInteger)-1) > ((NSUInteger)2)
-	_currentIndex = currentIndex>=(NSInteger)_assetArray.count ? (_assetArray.count-1) : currentIndex;
+	_currentIndex = currentIndex >= (NSInteger)_assetArray.count ? (_assetArray.count-1) : currentIndex;
 	[_collectionView reloadData];
 	
-	if (_currentIndex>=0) {
+	if (_currentIndex >= 0) {
 		[_collectionView scrollToItemAtIndexPath:[NSIndexPath indexPathForRow:_currentIndex inSection:0]
 								atScrollPosition:UICollectionViewScrollPositionCenteredHorizontally
 										animated:YES];
 	}
-}
-
-- (void)setHideControls:(BOOL)hideControls
-{
-	_hideControls = hideControls;
-	_doneButton.hidden = hideControls;
-	_badgeLabel.hidden = hideControls;
-}
-
-- (void)didMoveToSuperview
-{
-	[super didMoveToSuperview];
-	
-	if (_hideControls) {
-		[self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-8-[view]-8-|" options:0 metrics:nil views:@{ @"view": _collectionView }]];
-		[self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[view]-8-|" options:0 metrics:nil views:@{ @"view": _collectionView }]];
-		
-	} else {
-		[self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-8-[view]-8-|" options:0 metrics:nil views:@{ @"view": _collectionView }]];
-		[self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-8-[view]-80-|" options:0 metrics:nil views:@{ @"view": _collectionView }]];
-		
-		// centerY与父视图居中
-		NSDictionary *doneButtonLayoutInfo = @{ @"view": _doneButton, @"subview": _doneButton.superview };
-		[self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[view]-(<=1)-[subview]" options:NSLayoutFormatAlignAllCenterY metrics:nil views:doneButtonLayoutInfo]];
-		[self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[view(55)]-10-|" options:0 metrics:nil views:doneButtonLayoutInfo]];
-		[self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[view(30)]" options:0 metrics:nil views:doneButtonLayoutInfo]];
-		
-		[self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:[label(18)]-6-|" options:0 metrics:nil views:@{@"label":self.badgeLabel}]];
-		[self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:[label(18)]-(-10)-[button]" options:0 metrics:nil views:@{@"label":self.badgeLabel, @"button":self.doneButton}]];
-	}
-	[self layoutIfNeeded];
 }
 
 - (void)scrollToAssetIfNeed:(PHAsset *)asset
@@ -197,7 +214,7 @@
 {
 	[collectionView deselectItemAtIndexPath:indexPath animated:YES];
 	// 占位点击
-	if (indexPath.row>=self.assetArray.count) {
+	if (indexPath.row >= self.assetArray.count) {
 		return;
 	}
 	

@@ -13,11 +13,11 @@
 
 @import AVKit;
 @interface XYPhotoHorizontalScrollItemView()<UIScrollViewDelegate>
-{
-	PHImageRequestID _imageRequestId;
-}
+
 @property (nonatomic, strong) PHCachingImageManager *imageManager;
 @property (nonatomic, strong) UIButton *playVideoButton;
+@property (nonatomic, assign) PHImageRequestID imageRequestId;
+
 @end
 
 @implementation XYPhotoHorizontalScrollItemView
@@ -29,8 +29,8 @@
 		self.delegate = self;
 		self.minimumZoomScale = 1.f;
 		self.maximumZoomScale = 2.f;
-		self.showsHorizontalScrollIndicator = NO;
-		self.showsVerticalScrollIndicator = NO;
+		self.showsHorizontalScrollIndicator = false;
+		self.showsVerticalScrollIndicator = false;
 		self.decelerationRate = UIScrollViewDecelerationRateFast;
 		self.backgroundColor = [UIColor blackColor];
 		
@@ -43,7 +43,7 @@
 		_playVideoButton = [UIButton buttonWithType:UIButtonTypeCustom];
 		[_playVideoButton setImage:[UIImage xy_imageWithName:@"cl_photokit_play"] forState:UIControlStateNormal];
 		_playVideoButton.frame = CGRectMake((self.frame.size.width-100)/2.f, (self.frame.size.height-100)/2.f, 100, 100);
-		_playVideoButton.hidden = YES;
+		_playVideoButton.hidden = true;
 		[_playVideoButton addTarget:self action:@selector(playAction) forControlEvents:UIControlEventTouchUpInside];
 		[self addSubview:_playVideoButton];
 		
@@ -95,7 +95,7 @@
 												resultHandler:^(UIImage *result, NSDictionary *info) {
 													BOOL downloadFinined = ![[info objectForKey:PHImageCancelledKey] boolValue] && ![info objectForKey:PHImageErrorKey] && ![[info objectForKey:PHImageResultIsDegradedKey] boolValue];
 													if (downloadFinined) {
-                                                        self->_imageRequestId = 0;
+                                                        self.imageRequestId = 0;
 													}
 													self.imageView.image = result;
 												}];

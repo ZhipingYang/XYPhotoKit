@@ -22,6 +22,21 @@
 
 @implementation XYPhotoCameraController
 
+- (BOOL)shouldAutorotate
+{
+    return false;
+}
+
+- (BOOL)prefersStatusBarHidden
+{
+    return YES;
+}
+
+- (UIInterfaceOrientationMask)supportedInterfaceOrientations
+{
+    return UIInterfaceOrientationMaskPortrait;
+}
+
 - (void)loadView
 {
 	[super loadView];
@@ -32,7 +47,8 @@
 			self.imagePicker = [[UIImagePickerController alloc] init];
 			self.imagePicker.sourceType = UIImagePickerControllerSourceTypeCamera;
 			self.imagePicker.delegate = self;
-			self.imagePicker.showsCameraControls = NO;
+			self.imagePicker.showsCameraControls = false;
+            self.imagePicker.view.translatesAutoresizingMaskIntoConstraints = false;
 			[self.view addSubview:self.imagePicker.view];
 			[self addChildViewController:self.imagePicker];
 			[self.imagePicker didMoveToParentViewController:self];
@@ -42,20 +58,23 @@
 	}
 	
 	_overlayView = [[XYPhotoCameraOverlayView alloc] initWithFrame:self.view.bounds];
+    _overlayView.translatesAutoresizingMaskIntoConstraints = false;
 	_overlayView.delegate = self;
 	_overlayView.flashMode = UIImagePickerControllerCameraFlashModeAuto;
 	_overlayView.cameraDeivce = UIImagePickerControllerCameraDeviceRear;
 	[self.view addSubview:_overlayView];
-}
-
-- (BOOL)shouldAutorotate
-{
-	return NO;
-}
-
-- (BOOL)prefersStatusBarHidden
-{
-	return YES;
+    
+    [NSLayoutConstraint activateConstraints:@[
+        [_imagePicker.view.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],
+        [_imagePicker.view.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor],
+        [_imagePicker.view.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor],
+        [_imagePicker.view.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor],
+        
+        [_overlayView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],
+        [_overlayView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor],
+        [_overlayView.topAnchor constraintEqualToAnchor:self.view.topAnchor],
+        [_overlayView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor],
+    ]];
 }
 
 - (void)viewWillAppear:(BOOL)animated

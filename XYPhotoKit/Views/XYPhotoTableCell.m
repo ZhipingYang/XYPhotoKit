@@ -64,7 +64,7 @@ NSString *const XYPhotoTableCellReuseIdentifier = @"XYPhotoTableCellReuseIdentif
 	UIImageView *(^creatImageBlock)(CGRect frame) = ^(CGRect frame){
 		UIImageView *imageView = [[UIImageView alloc] initWithFrame:frame];
 		imageView.contentMode = UIViewContentModeScaleAspectFill;
-		imageView.clipsToBounds = YES;
+		imageView.clipsToBounds = true;
 		imageView.layer.borderColor = [UIColor whiteColor].CGColor;
 		imageView.layer.borderWidth = 1.0/[UIScreen mainScreen].scale;
 		[self.contentView addSubview:imageView];
@@ -109,7 +109,7 @@ NSString *const XYPhotoTableCellReuseIdentifier = @"XYPhotoTableCellReuseIdentif
 	if (fetchResult.count<=0) {
 		UIImage *placeholderImage = [UIImage xy_imageWithName:@"cl_photokit_placeholder"];
 		[@[_mainImageView, _centerImageView, _backImageView] enumerateObjectsUsingBlock:^(UIImageView * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-			obj.hidden = NO;
+			obj.hidden = false;
 			obj.image = placeholderImage;
 		}];
 	} else {

@@ -7,8 +7,8 @@
 //
 #import "XYPhotoKitHelper.h"
 
-@import AssetsLibrary;
 @import AVFoundation;
+@import Photos;
 
 @implementation XYPhotoKitHelper
 
@@ -25,14 +25,14 @@ const struct XYPhotoImagePickerName XYPhotoImagePickerName = {
 
 + (BOOL)isAvailableAccessPhoto
 {
-	ALAuthorizationStatus photoStatus = [ALAssetsLibrary authorizationStatus];
-	return photoStatus == ALAuthorizationStatusAuthorized || photoStatus == ALAuthorizationStatusNotDetermined;
+    PHAuthorizationStatus status = PHPhotoLibrary.authorizationStatus;
+    return status == PHAuthorizationStatusAuthorized || status == PHAuthorizationStatusNotDetermined;
 }
 
 + (BOOL)isAuthorizedAccessPhoto
 {
-	ALAuthorizationStatus photoStatus = [ALAssetsLibrary authorizationStatus];
-	return photoStatus == ALAuthorizationStatusAuthorized;
+    PHAuthorizationStatus status = PHPhotoLibrary.authorizationStatus;
+    return status == PHAuthorizationStatusAuthorized;
 }
 
 + (BOOL)isAvailableAccessCamera
