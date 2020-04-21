@@ -72,7 +72,7 @@
 	[UIAlertController xy_showAlertPhotoSettingIfUnauthorized];
 	UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage xy_imageWithName:@"cl_photo_picker_inaccessible"]];
     imageView.translatesAutoresizingMaskIntoConstraints = false;
-	imageView.contentMode = UIViewContentModeScaleAspectFit;
+	imageView.contentMode = UIViewContentModeCenter;
 	[self.view addSubview:imageView];
     
     [NSLayoutConstraint activateConstraints:@[
