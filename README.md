@@ -24,9 +24,9 @@
 | 属性  | 说明 | 
 | --- | --- |
 | **Controller** | |
-| CKPhotoMultiImagePicker | NavigationController,承载两个VC栈、相册相关参数初始化工作及 delegate & datasource |
-| CKPhotoAlbumListController | 系统和用户的相册列表（tableview），根据CLPhotoMultiPickerStartPosition来确定初始展示哪个VC界面 |
-| CKPhotoAlbumDetailController | 某个相册的详情（collectionView），单选多选照片的不同交互主要完成于此，可进入大图预览 |
+| XYPhotoMultiImagePicker | NavigationController,承载两个VC栈、相册相关参数初始化工作及 delegate & datasource |
+| XYPhotoAlbumListController | 系统和用户的相册列表（tableview），根据CLPhotoMultiPickerStartPosition来确定初始展示哪个VC界面 |
+| XYPhotoAlbumDetailController | 某个相册的详情（collectionView），单选多选照片的不同交互主要完成于此，可进入大图预览 |
 | CKPhotoPreviewViewController | 大图预览（CKHorizontalScrollView）|
 
 ### 用法
