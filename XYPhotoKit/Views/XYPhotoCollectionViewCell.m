@@ -80,17 +80,21 @@
 	if (_imageRequestId!=0) {
 		[cacheManager cancelImageRequest:_imageRequestId];
 	}
-	
-	PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
-	options.networkAccessAllowed = [XYPhotoSelectedAssetManager sharedManager].allowNetRequestIfiCloud;
-
+    PHImageRequestOptions *options = [[PHImageRequestOptions alloc] init];
+//    options.deliveryMode = PHImageRequestOptionsDeliveryModeFastFormat;
+    options.networkAccessAllowed = [XYPhotoSelectedAssetManager sharedManager].allowNetRequestIfiCloud;
 	_imageRequestId = [cacheManager requestImageForAsset:asset
-											  targetSize:CGSizeScale(itemSize, [UIScreen mainScreen].scale)
-											 contentMode:PHImageContentModeAspectFill
-												 options:options
-										   resultHandler:^(UIImage *result, NSDictionary *info) {
-											   self.imageView.image = result;
-										   }];
+                                              targetSize:CGSizeScale(itemSize, [UIScreen mainScreen].scale)
+                                             contentMode:PHImageContentModeAspectFill
+                                                 options:options
+                                           resultHandler:^(UIImage *result, NSDictionary *info) {
+//        NSLog(@"%@ %@ %d", result, info, self.imageRequestId);
+//        PHImageRequestID requestID = [info[@"PHImageResultRequestIDKey"] intValue];
+//        if (result && requestID == self.imageRequestId) {
+//            self.imageView.image = result;
+//        }
+        if (result) { self.imageView.image = result; }
+    }];
 }
 
 - (void)markButtonClick

@@ -92,13 +92,13 @@
 												   targetSize:CGSizeMake(asset.pixelWidth, asset.pixelHeight)
 												  contentMode:PHImageContentModeAspectFit
 													  options:options
-												resultHandler:^(UIImage *result, NSDictionary *info) {
-													BOOL downloadFinined = ![[info objectForKey:PHImageCancelledKey] boolValue] && ![info objectForKey:PHImageErrorKey] && ![[info objectForKey:PHImageResultIsDegradedKey] boolValue];
-													if (downloadFinined) {
-                                                        self.imageRequestId = 0;
-													}
-													self.imageView.image = result;
-												}];
+                                                resultHandler:^(UIImage *result, NSDictionary *info) {
+        BOOL downloadFinined = ![[info objectForKey:PHImageCancelledKey] boolValue] && ![info objectForKey:PHImageErrorKey] && ![[info objectForKey:PHImageResultIsDegradedKey] boolValue];
+        if (downloadFinined) {
+            self.imageRequestId = 0;
+        }
+        if (result) { self.imageView.image = result; }
+    }];
 }
 
 #pragma mark - actions
