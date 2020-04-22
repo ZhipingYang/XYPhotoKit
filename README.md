@@ -27,7 +27,7 @@
 | XYPhotoMultiImagePicker | NavigationController,承载两个VC栈、相册相关参数初始化工作及 delegate & datasource |
 | XYPhotoAlbumListController | 系统和用户的相册列表（tableview），根据CLPhotoMultiPickerStartPosition来确定初始展示哪个VC界面 |
 | XYPhotoAlbumDetailController | 某个相册的详情（collectionView），单选多选照片的不同交互主要完成于此，可进入大图预览 |
-| CKPhotoPreviewViewController | 大图预览（CKHorizontalScrollView）|
+| XYPhotoPreviewViewController | 大图预览（XYHorizontalScrollView）|
 
 ### 用法
 
@@ -44,7 +44,7 @@ multiImagePicker.allowNetRequestIfiCloud = YES; // 支持iCloud网络获取
 [self presentViewController:multiImagePicker animated:YES completion:nil];
 
 
-#pragma mark - CKPhotoMultiImagePickerDelegate, CKPhotoMultiImagePickerDataSource
+#pragma mark - XYPhotoMultiImagePickerDelegate, XYPhotoMultiImagePickerDataSource
 
 - (void)multiImagePicker:(XYPhotoMultiImagePicker *)multiImagePicker selectedAssets:(NSArray<PHAsset *> *)assets
 {
@@ -65,9 +65,9 @@ multiImagePicker.allowNetRequestIfiCloud = YES; // 支持iCloud网络获取
 | 属性  | 说明 | 
 | --- | --- |
 | **Controller** | |
-| XYPhotoMultiCameraPicker | NavigationController,承载CKPhotoCameraController、相机相关参数初始化工作及 delegate & datasource |
+| XYPhotoMultiCameraPicker | NavigationController,承载XYPhotoCameraController、相机相关参数初始化工作及 delegate & datasource |
 | XYPhotoCameraController | 基于ImagePickerController，需要有相机和相册两个权限做交互，可进入大图预览 |
-| XYPhotoPreviewViewController | 大图预览（CKHorizontalScrollView）|
+| XYPhotoPreviewViewController | 大图预览（XYHorizontalScrollView）|
 
 ### 用法
 
