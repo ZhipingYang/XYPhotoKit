@@ -3,15 +3,15 @@
 基于PhotoKit开发的照片获取方式，支持多选单选（对应的UI略有不同），支持iCloud获取相册等
 
 <p align="center">
-<img width= 24.6% src="https://user-images.githubusercontent.com/9360037/79872498-74b01600-8418-11ea-99b5-9b2dafd8bc31.jpeg">
-<img width= 24.6% src="https://user-images.githubusercontent.com/9360037/79872488-6eba3500-8418-11ea-89d5-5b481949612f.jpeg">
-<img width= 24.6% src="https://user-images.githubusercontent.com/9360037/79872506-7679d980-8418-11ea-8f83-e5ace8d8b87f.jpeg">
-<img width=24.8% src="https://user-images.githubusercontent.com/9360037/79872515-77ab0680-8418-11ea-80cc-38edf2da176e.jpeg">
+<img width= 24% src="https://user-images.githubusercontent.com/9360037/79872498-74b01600-8418-11ea-99b5-9b2dafd8bc31.jpeg">
+<img width= 24% src="https://user-images.githubusercontent.com/9360037/79872488-6eba3500-8418-11ea-89d5-5b481949612f.jpeg">
+<img width= 24% src="https://user-images.githubusercontent.com/9360037/79872506-7679d980-8418-11ea-8f83-e5ace8d8b87f.jpeg">
+<img width=24% src="https://user-images.githubusercontent.com/9360037/79872515-77ab0680-8418-11ea-80cc-38edf2da176e.jpeg">
 
-<img width= 24.6% src="https://user-images.githubusercontent.com/9360037/79879298-163b6580-8421-11ea-9e7d-4dcc4a177267.jpeg">
-<img width= 24.6% src="https://user-images.githubusercontent.com/9360037/79879319-1c314680-8421-11ea-9987-b2d9d7d1db1d.jpeg">
-<img width= 24.6% src="https://user-images.githubusercontent.com/9360037/79872504-7548ac80-8418-11ea-9cf7-8973a403dd0f.jpeg">
-<img width= 24.6% src="https://user-images.githubusercontent.com/9360037/79872508-77127000-8418-11ea-9fb6-3bd9e344d7c7.jpeg">
+<img width= 24% src="https://user-images.githubusercontent.com/9360037/79879298-163b6580-8421-11ea-9e7d-4dcc4a177267.jpeg">
+<img width= 24% src="https://user-images.githubusercontent.com/9360037/79879319-1c314680-8421-11ea-9987-b2d9d7d1db1d.jpeg">
+<img width= 24% src="https://user-images.githubusercontent.com/9360037/79872504-7548ac80-8418-11ea-9cf7-8973a403dd0f.jpeg">
+<img width= 24% src="https://user-images.githubusercontent.com/9360037/79872508-77127000-8418-11ea-9fb6-3bd9e344d7c7.jpeg">
 
 </p>
 
